@@ -28,4 +28,6 @@ private:
     int energia;
     int sorte;
 
+    int tesouro;
+
 };
