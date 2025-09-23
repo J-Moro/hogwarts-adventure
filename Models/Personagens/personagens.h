@@ -34,6 +34,7 @@ public:
     bool addItem(Item newItem);
     void mostrarInventario();
 
+    Item* inventario;
 
 private:
 
@@ -44,7 +45,6 @@ private:
 
     int tesouro;
     int provisoes;
-    Item* inventario;
     static const int MAX_ITEMS = 10;
     int itemCount;
 
