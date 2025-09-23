@@ -6,11 +6,8 @@ public:
     Monstro();
     ~Monstro();
 
-    void setBoo(bool value);
-    bool getBoo();
+    void transferirItens(Personagem &oponente);
 
 private:
-
-    bool boo;
 
 };
