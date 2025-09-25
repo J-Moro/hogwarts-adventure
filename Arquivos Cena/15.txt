@@ -1,0 +1,16 @@
+Uau ... o mapa revela o esconderijo da Pedra da Serpente!  A pedra está escondida em uma caverna. A entrada da caverna está bloqueada por uma aranha gigante. 
+
+N: Aranha Gigante 
+M: S 
+H: 12 
+S: 10 
+E: 12 
+T: 100 
+P: 2 
+I: Pedra da Serpente;c;0;0;0 
+
+#16:17 
+
+#1: Fugir: Você tenta fugir da aranha gigante. Vá para a cena 17. 
+2: Atacar: Você ataca a aranha gigante. Vá para a cena 16. 
+3: Usar magia: Você usa um feitiço de fogo. Se tiver sucesso, você queima a aranha gigante. Vá para a cena 16. 

@@ -1,0 +1,6 @@
+Você se sente desapontado com sua falta de habilidade e decide voltar para o dormitório. 
+Ao caminhar pelo corredor, você encontra um pergaminho com o símbolo do mapa do maroto. 
+
+I: Pergaminho;c;0;0;0  
+
+#1: Ir para o salão comunal: A história da aventura termina aqui. Você desiste da busca pela Pedra da Serpente. 

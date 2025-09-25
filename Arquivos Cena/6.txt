@@ -1,0 +1,6 @@
+Você vasculha as estantes e encontra um mapa da seção proibida, mas o mapa está guardado em um baú trancado. 
+Você tenta abri-lo. 
+
+#1: Usar a sua sorte para abrir o baú: Teste sua sorte. Se for bem-sucedido, você abre o baú. Vá para a cena 12. 
+#2: Tentar arrombar o baú com um feitiço: Use o feitiço Bombarda para arrombar o baú. Você precisa de 8 ou mais de habilidade para ter sucesso. Se for bem-sucedido, vá para a cena 12. 
+#3: Usar uma poção do sono para derrubar a maldição do baú: Vá para a cena 13. 

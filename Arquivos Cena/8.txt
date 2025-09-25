@@ -1,0 +1,14 @@
+Poxa... você falha no teste de sorte para encontrar a chave do baú. 
+O barulho de um livro caindo no chão ecoa na biblioteca, chamando a atenção de um fantasma. 
+
+N: Pirraça  
+M: S 
+H: 10  
+S: 10  
+E: 10  
+T: 20  
+P: 1  
+I: Mapa;c;0;0;0  
+
+#12:9  
+#Fugir: Você tenta escapar de Pirraça, mas ele voa em sua direção. Vá para a cena 9. 
