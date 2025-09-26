@@ -2,7 +2,7 @@
 
 Personagem::Personagem(){
 
-    inventario = new Item[MAX_ITEMS];
+    //inventario = new Item[MAX_ITEMS];
     itemCount = 0;
 
 }
@@ -121,7 +121,7 @@ bool Personagem::addItem(Item newItem){
             std::cout << "Inventario cheio!" << std::endl;
             return false;
         }
-        inventario[itemCount] = newItem;
+        //inventario[itemCount] = newItem;
         itemCount++;
         return true;
 
@@ -134,11 +134,15 @@ void Personagem::mostrarInventario() {
         }
         for (int i = 0; i < itemCount; i++) {
             std::cout << "  " << (i + 1) << ". Nome: " 
-                      << inventario[i].getName()
-                      << ", Tipo: " << inventario[i].getType()
-                      << ", Combate: " << inventario[i].getCombat()
-                      << ", FA: " << inventario[i].getFaBonus()
-                      << ", Dano: " << inventario[i].getDamageBonus()
+                      //<< inventario[i].getName()
+                      //<< ", Tipo: " << inventario[i].getType()
+                      //<< ", Combate: " << inventario[i].getCombat()
+                      //<< ", FA: " << inventario[i].getFaBonus()
+                      //<< ", Dano: " << inventario[i].getDamageBonus()
                       << std::endl;
         }
     }
+
+void Personagem::setInventario(Item* inventarioUsuario){
+    this->inventarioUsuario = inventarioUsuario;
+}

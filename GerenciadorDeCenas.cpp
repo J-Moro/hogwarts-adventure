@@ -1,13 +1,20 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <sstream>
 #include "GerenciadorDeCenas.h"
+#include "Models/Cenas/Cena.h"
+#include "Models/Cenas/CenaDeCombate.h"
+#include "Models/Cenas/CenaDeTexto.h"
+#include "Models/Itens/ItemComum.h"
 
+using namespace std;
 
-GerenciadorDeCena::GerenciadorDeCena(){}
-GerenciadorDeCena::~GerenciadorDeCena(){}
+GerenciadorDeCena::GerenciadorDeCena() {}
+GerenciadorDeCena::~GerenciadorDeCena() {}
 
-void GerenciadorDeCena::carregaCena(string nomeArquivo){
+void GerenciadorDeCena::carregaCena(string nomeArquivo)
+{
     try {    
         ifstream arquivo(nomeArquivo);
 
@@ -19,10 +26,21 @@ void GerenciadorDeCena::carregaCena(string nomeArquivo){
         arquivo >> primeiraPalavra;
         arquivo.close();
 
-        if (primeiraPalavra == "Uau" || primeiraPalavra == "Poxa") {
-
-        } else {
-            
+        // Limpa a cena anterior para evitar vazamento de memória
+        if (cenaAtual != nullptr) {
+            delete cenaAtual;
+            cenaAtual = nullptr;
         }
+
+        // Instancia a cena correta
+        if (primeiraPalavra == "Uau" || primeiraPalavra == "Poxa") {
+            cenaAtual = new CenaDeCombate(nomeArquivo);
+            cenaAtual->carregaCena(nomeArquivo);
+        } else {
+            cenaAtual = new CenaDeTexto(nomeArquivo);
+            cenaAtual->carregaCena(nomeArquivo);
+        }        
+    } catch (const exception& e) {
+        cerr << "Erro: " << e.what() << endl;
     }
 }

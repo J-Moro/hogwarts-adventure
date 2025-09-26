@@ -1,4 +1,3 @@
-#pragma once
 #include "Armadura.h"
 
 Armadura::Armadura(string name, int faBonus, int damageBonus){

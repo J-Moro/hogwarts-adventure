@@ -12,6 +12,7 @@ class Cena {
         string getNomeArquivo();
         string getTexto();
         virtual void exibirCena() = 0;
+        virtual void carregaCena(string nomeArquivo) = 0;
     
     private:
         string nomeArquivo;

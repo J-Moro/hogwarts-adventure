@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Cena.h"
-#include "Monstro.h"
+#include "../Personagens/Monstro.h"
 #include <string>
 
 using namespace std;
@@ -14,13 +14,14 @@ public:
     ~CenaDeCombate();
 
     void exibirCena() override;
-
-    void setMonstro(Monstro monstro);
+    void setMonstro(Monstro* monstro);
     void setCenasPosCombate(string sucesso, string derrota);
+    void carregaCena(string nomeArquivo);
     string getProximaCena(bool vitoria);
+    Monstro* getMonstro();
 
 private:
-    Monstro monstro;
+    Monstro* monstro;
     string proximaCenaSucesso;
     string proximaCenaDerrota;
 };

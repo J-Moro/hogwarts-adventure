@@ -33,8 +33,8 @@ public:
     int calcFA();
     bool addItem(Item newItem);
     void mostrarInventario();
-
-    Item* inventario;
+    void setInventario(Item* inventario);
+    
 
 private:
 
@@ -47,5 +47,6 @@ private:
     int provisoes;
     static const int MAX_ITEMS = 10;
     int itemCount;
+    Item* inventarioUsuario;
 
 };

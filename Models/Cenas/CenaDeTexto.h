@@ -13,6 +13,7 @@ class CenaDeTexto : public Cena {
 
         void setOpcoes(map<int, std::string> opcoes);
         void setItemNecessario(string item);
+        void carregaCena(string nomeArquivo);
         string getProximaCena(int escolha);
 
     private:
