@@ -13,7 +13,7 @@ public:
     CenaDeCombate(string nomeArquivo);
     ~CenaDeCombate();
 
-    void exibirCena(Personagem& jogador) override;
+    string exibirCena(Personagem& jogador) override;
     void setMonstro(Monstro* monstro);
     void setCenasPosCombate(string sucesso, string derrota);
     void carregaCena(string nomeArquivo) override;

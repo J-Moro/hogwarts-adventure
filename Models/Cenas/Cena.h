@@ -10,13 +10,14 @@ class Cena {
         Cena(string nomeArquivo);
         ~Cena();
 
-        virtual void exibirCena(Personagem& jogador) = 0;
+        virtual string exibirCena(Personagem& jogador) = 0;
         string getNomeArquivo();
         string getTexto();
+        void setTexto(string t);
+        void lerConteudoBruto(string nomeArquivo);
         virtual void carregaCena(string nomeArquivo) = 0;
     
     private:
         string nomeArquivo;
-        string texto; 
-
+        string texto;
 };

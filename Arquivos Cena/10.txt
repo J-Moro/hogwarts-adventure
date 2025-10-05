@@ -1,6 +1,6 @@
-Você decide pedir ajuda ao Barão Sangrento para abrir a porta da seção proibida. Ele flutua em sua direção com um olhar misterioso. 
-"Eu posso abrir a porta para você, mas primeiro você terá que me responder uma charada," ele sussurra. 
+Voce decide pedir ajuda ao Barao Sangrento para abrir a porta da secao proibida. Ele flutua em sua direcao com um olhar misterioso. 
+"Eu posso abrir a porta para voce, mas primeiro voce tera que me responder uma charada," ele sussurra. 
 "O que tem que ser quebrado antes de ser usado?" 
 
-#2: Um ovo: O Barão Sangrento assente com a cabeça e abre a porta para você. Vá para a cena 2. 
-#3: Um segredo: O Barão Sangrento ri e desaparece, deixando você sozinho. Vá para a cena 3. 
+#2: Um ovo: O Barao Sangrento assente com a cabeça e abre a porta para voce. Va para a cena 2. 
+#3: Um segredo: O Barao Sangrento ri e desaparece, deixando voce sozinho. Va para a cena 3. 

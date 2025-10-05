@@ -1,6 +1,6 @@
-Você testa sua sorte para encontrar a chave do baú e é bem-sucedido. 
-A chave está em uma das estantes, bem ao lado da sua mão. Você pega a chave e abre o baú. 
+e testa sua sorte para encontrar a chave do bau e eh bem-sucedido. 
+A chave esta em uma das estantes, bem ao lado da sua mao. Voce pega a chave e abre o bau. 
 
 I: Chave do mapa;c;0;0;0  
 
-#12: Abrir o baú: Vá para a cena 12. 
+#12: Abrir o bau: Va para a cena 12. 

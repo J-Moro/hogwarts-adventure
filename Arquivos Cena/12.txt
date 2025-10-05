@@ -1,6 +1,6 @@
-Você abre o baú e encontra o mapa da seção proibida. O mapa tem uma marcação que indica que um livro especial está escondido em uma das estantes. 
-O livro é pesado e tem uma capa de couro. O título está escrito em uma língua antiga que você não entende. Você abre o livro e vê um enigma. 
+Voce abre o bau e encontra o mapa da secao proibida. O mapa tem uma marcacao que indica que um livro especial esta escondido em uma das estantes. 
+O livro eh pesado e tem uma capa de couro. O titulo esta escrito em uma lingua antiga que voce não entende. Voce abre o livro e vê um enigma. 
 
 I: Livro Mágico;c;0;0;0 
 
-#14: Ler o enigma: O enigma diz: "Se a Pedra da Serpente você busca, no coração da Floresta Proibida, a verdade se anuncia. Na árvore mais antiga, o enigma se resolve. Na pedra mais velha, o mapa se revela." Você precisa ir para a Floresta Proibida. Vá para a cena 14. 
+#14: Ler o enigma: O enigma diz: "Se a Pedra da Serpente voce busca, no coracao da Floresta Proibida, a verdade se anuncia. Na arvore mais antiga, o enigma se resolve. Na pedra mais velha, o mapa se revela." Voce precisa ir para a Floresta Proibida. Va para a cena 14. 

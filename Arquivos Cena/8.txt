@@ -1,5 +1,5 @@
-Poxa ... você falha no teste de sorte para encontrar a chave do baú. 
-O barulho de um livro caindo no chão ecoa na biblioteca, chamando a atenção de um fantasma. 
+Poxa ... voce falha no teste de sorte para encontrar a chave do bau. 
+O barulho de um livro caindo no chao ecoa na biblioteca, chamando a atencao de um fantasma. 
 
 N: Pirraca
 M: S 
@@ -11,4 +11,4 @@ P: 1
 I: Mapa;c;0;0;0  
 
 #12:9  
-#Fugir: Você tenta escapar de Pirraça, mas ele voa em sua direção. Vá para a cena 9. 
+#Fugir: Voce tenta escapar de Pirraca, mas ele voa em sua direcao. Va para a cena 9. 

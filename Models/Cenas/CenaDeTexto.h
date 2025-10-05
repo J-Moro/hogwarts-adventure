@@ -9,7 +9,7 @@ class CenaDeTexto : public Cena {
         CenaDeTexto(string nomeArquivo);
         ~CenaDeTexto();
 
-        void exibirCena(Personagem& jogador) override;
+        string exibirCena(Personagem& jogador) override;
 
         void setOpcoes(int opcao);
         void setItemNecessario(string item);

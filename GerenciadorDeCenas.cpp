@@ -35,13 +35,14 @@ void GerenciadorDeCena::carregaCena(string nomeArquivo)
     // Instancia a cena correta
     if (primeiraPalavra == "Uau" || primeiraPalavra == "Poxa") {
         cenaAtual = new CenaDeCombate(nomeArquivo);
-        cenaAtual->carregaCena(nomeArquivo);
     }
     else {
         cenaAtual = new CenaDeTexto(nomeArquivo);
-        cenaAtual->carregaCena(nomeArquivo);
     }
 
+    cenaAtual->lerConteudoBruto(nomeArquivo);
+
+    cenaAtual->carregaCena(nomeArquivo);
 }
 
 Cena* GerenciadorDeCena::getCenaAtual() {

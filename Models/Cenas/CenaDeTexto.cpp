@@ -5,20 +5,42 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <limits>
 
 CenaDeTexto::CenaDeTexto(string nomeArquivo) : Cena(nomeArquivo) {
 }
 
 CenaDeTexto::~CenaDeTexto(){}
 
-void CenaDeTexto::exibirCena(Personagem& jogador) {
-    cout << getTexto() << endl;
-    if (!opcoes.empty()) {
-        cout << "\nOpcoes:" << endl;
-        for (const auto& par : opcoes) {
-            cout << par.first << endl;
+string CenaDeTexto::exibirCena(Personagem& jogador) {
+    //TODO: implementar testar sorte para algumas cenas
+    int escolha;
+    
+    cout << "\n\n\n" << getTexto() << endl;
+
+    while (true) {
+        cout << "\nQual o numero da sua escolha para a proxima cena: ";
+        if (cin >> escolha) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            if (opcoes.find(escolha) == opcoes.end()) {
+                cout << "\n[OPCAO INVALIDA] O numero digitado (" << escolha << ") nao corresponde a uma escolha valida nesta cena. Tente novamente." << endl;
+                continue;
+            }
+            break;    
+        } else {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "[ENTRADA INVALIDA] - Por favor digite um numero valido." << endl;
+            continue;
         }
     }
+    
+    // 6. Monta e retorna o nome do arquivo (ID.txt)
+    string proximaCenaFilename = to_string(escolha) + ".txt";
+
+    // 7. Retorna o nome do arquivo para o main loop efetuar a transição
+    return proximaCenaFilename;
 }
 
 void CenaDeTexto::setOpcoes(int opcao) {

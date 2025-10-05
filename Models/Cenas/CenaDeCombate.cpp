@@ -12,10 +12,13 @@ using namespace std;
 CenaDeCombate::CenaDeCombate(string nomeArquivo) : Cena(nomeArquivo) {}
 CenaDeCombate::~CenaDeCombate(){}
 
-void CenaDeCombate::exibirCena(Personagem& jogador) {
-    cout << getTexto() << endl;
-    //implementar texto avisando que um monstro chegou
-    cout << "Proxima cena eh" << iniciaCombate(jogador) <<endl;
+string CenaDeCombate::exibirCena(Personagem& jogador) {
+    stringstream ss;
+    
+    cout << "\n\n\n" << getTexto() << endl;
+    string proximaCena= this->iniciaCombate(jogador);
+    proximaCena += ".txt";
+    return proximaCena;
 }
 
 void CenaDeCombate::setMonstro(Monstro* monstro) {

@@ -1,6 +1,6 @@
-Você se esgueira pela biblioteca durante a noite. As prateleiras se estendem até o teto, formando um labirinto de conhecimento e segredos. 
-Um cheiro de pergaminho antigo e poeira enche o ar. Você se aproxima da seção proibida, mas a porta está trancada. 
+e se esgueira pela biblioteca durante a noite. As prateleiras se estendem ate o teto, formando um labirinto de conhecimento e segredos. 
+Um cheiro de pergaminho antigo e poeira enche o ar. Voce se aproxima da secao proibida, mas a porta esta trancada. 
 
-#2/3: Arrombar a porta com um feitiço: Você tenta usar o feitiço Alohomora. Você precisa de 8 ou mais de habilidade para ter sucesso. Se tiver, vá para a cena 2. Se falhar, vá para a cena 3. 
-#4: Procurar a chave: Você decide procurar a chave. Vá para a cena 4. 
-#5: Voltar para o dormitório: Você desiste de arrombar a porta. A frustração de ter falhado faz você se dar conta de que precisa se preparar melhor. Vá para a cena 5. 
+#2/3: Arrombar a porta com um feitico: Voce tenta usar o feitico Alohomora. Voce precisa de 8 ou mais de habilidade para ter sucesso. Se tiver, va para a cena 2. Se falhar, va para a cena 3. 
+#4: Procurar a chave: Voce decide procurar a chave. Va para a cena 4. 
+#5: Voltar para o dormitorio: Voce desiste de arrombar a porta. A frustração de ter falhado faz você se dar conta de que precisa se preparar melhor. Vá para a cena 5. 

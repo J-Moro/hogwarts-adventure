@@ -1,4 +1,4 @@
-Poxa ... você tenta subir na prateleira, mas ela balança e você cai no chão. O baque atrai a atenção de Filch, que vem em sua direção com Madame Norra. 
+Poxa ... voce tenta subir na prateleira, mas ela balança e voce cai no chao. O baque atrai a atencao de Filch, que vem em sua direcao com Madame Norra. 
 
 N: Filch
 M: S 
@@ -10,4 +10,4 @@ P: 1
 I: Chave do mapa;c;0;0;0
 
 #12:9 
-#Fugir: Você tenta escapar de Filch. Vá para a cena 9. 
+#Fugir: Voce tenta escapar de Filch. Va para a cena 9. 
