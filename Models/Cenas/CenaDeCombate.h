@@ -13,14 +13,21 @@ public:
     CenaDeCombate(string nomeArquivo);
     ~CenaDeCombate();
 
-    void exibirCena() override;
+    void exibirCena(Personagem& jogador) override;
     void setMonstro(Monstro* monstro);
     void setCenasPosCombate(string sucesso, string derrota);
-    void carregaCena(string nomeArquivo);
+    void carregaCena(string nomeArquivo) override;
+    string iniciaCombate(Personagem& jogador);
     string getProximaCena(bool vitoria);
     Monstro* getMonstro();
 
 private:
+    //private methods
+    void executarAtaque(Personagem& jogador);
+    bool tentarFuga(Personagem& jogador);
+    void exibirStatusCombate(Personagem& jogador);
+
+
     Monstro* monstro;
     string proximaCenaSucesso;
     string proximaCenaDerrota;

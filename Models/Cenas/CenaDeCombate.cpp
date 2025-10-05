@@ -5,14 +5,17 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <limits>
+
+using namespace std;
 
 CenaDeCombate::CenaDeCombate(string nomeArquivo) : Cena(nomeArquivo) {}
 CenaDeCombate::~CenaDeCombate(){}
 
-void CenaDeCombate::exibirCena() {
+void CenaDeCombate::exibirCena(Personagem& jogador) {
     cout << getTexto() << endl;
     //implementar texto avisando que um monstro chegou
-    //chamar a lógica que inicia o combate - iniciaCombate()
+    cout << "Proxima cena eh" << iniciaCombate(jogador) <<endl;
 }
 
 void CenaDeCombate::setMonstro(Monstro* monstro) {
@@ -38,6 +41,7 @@ string CenaDeCombate::getProximaCena(bool vitoria) {
     }
 }
 
+//carrega cena quando for cena de combate
 void CenaDeCombate::carregaCena(string nomeArquivo) {
     ifstream arquivo(nomeArquivo);
 
@@ -58,14 +62,13 @@ void CenaDeCombate::carregaCena(string nomeArquivo) {
     string linhaAux;
     int habilidade, sorte, energia, tesouro, provisao;
     string itemNome;
-    
-    // Extrai o nome do arquivo, removendo a extensão ".txt"
-    size_t pos = nomeArquivo.find('.');
-    string nomeMonstro = "Monstro" + nomeArquivo.substr(0, pos);
-    
-    // Lê os atributos do monstro
-    stringstream ss(linha);
-    ss >> linhaAux; // Descarta a palavra "N:"
+    string nomeMonstro;
+    stringstream ss;
+
+    ss.str(linha);
+    ss.clear();
+    ss >> linhaAux;
+    getline(ss, nomeMonstro);
     
     getline(arquivo, linha); ss.str(linha); ss.clear(); ss >> linhaAux; // M:
     getline(arquivo, linha); ss.str(linha); ss.clear(); ss >> linhaAux >> habilidade; // H:
@@ -73,18 +76,144 @@ void CenaDeCombate::carregaCena(string nomeArquivo) {
     getline(arquivo, linha); ss.str(linha); ss.clear(); ss >> linhaAux >> energia; // E:
     getline(arquivo, linha); ss.str(linha); ss.clear(); ss >> linhaAux >> tesouro; // T:
     getline(arquivo, linha); ss.str(linha); ss.clear(); ss >> linhaAux >> provisao; // P:
-    getline(arquivo, linha); ss.str(linha); ss.clear(); ss >> linhaAux >> itemNome; // I:
+   
+    //I - nome com espaços:
+    getline(arquivo, linha);
+    ss.str(linha);
+    ss.clear();
+    ss >> linhaAux;
+    std::getline(ss, itemNome, ';');
     
     // Cria o objeto ItemComum
-    Item* itemDoMonstro = new ItemComum(itemNome);
+    Item* itemDoMonstro = new ItemComum(itemNome); 
 
     // Instancia o monstro e adiciona os valores diretamente
     this->monstro = new Monstro(nomeMonstro, habilidade, sorte, energia, tesouro, provisao, itemDoMonstro);
 
-    // Leitura das cenas de destino (sucesso e falha)
-    getline(arquivo, linha); //descarta linha em branco
-    getline(arquivo, linha); //linha com destinos
+    //le as linhas de sucesso e derrota
+    do {
+        if (!getline(arquivo, linha)) {
+            break;
+        }
+    } while (linha.find_first_not_of(" \t\n\r") == string::npos);
+
     stringstream ssDestino(linha);
-    char delimiter;
-    ssDestino >> this->proximaCenaSucesso >> delimiter >> this->proximaCenaDerrota;
+    char hashTag;
+
+    ssDestino >> hashTag;
+
+    std::getline(ssDestino, this->proximaCenaSucesso, ':');
+
+    ssDestino >> this->proximaCenaDerrota;
+    ssDestino >> this->proximaCenaDerrota;
+}
+
+string CenaDeCombate::iniciaCombate(Personagem& jogador) {
+    cout << "----- BATALHA INICIADA -----" << endl;
+
+
+    //loop de batalha - roda enquanto os dois personagens tiverem energia
+    while (jogador.getEnergia() > 0 && monstro->getEnergia() > 0) {
+        exibirStatusCombate(jogador);
+
+        char acao;
+        cout << "\n" << "O que voce vai fazer? (A)tacar, (M)agia, (T)estar Sorte, (F)ugir: ";
+        cin >> acao;
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        if (acao == 'A' || acao == 'a') {
+            executarAtaque(jogador);
+
+        } else if (acao == 'T' || acao == 't') {
+            bool sucesso = jogador.testaSorte();
+            if (sucesso) {
+                cout << "\n" << " SUCESSO! A sorte esta do seu lado. Voce conseguiu um bonus de sorte para a proxima rodada." << endl;
+                jogador.setBonusSorte(true);
+            }
+            else {
+                cout << "\n" << "FALHA! A sorte nao esta do seu lado." << endl;
+            }
+
+        } else if (acao == 'F' || acao == 'f') {
+            if (tentarFuga(jogador)) {
+                return getProximaCena(true);
+            }
+        }
+        else if (acao == 'M' || acao == 'm') {
+            //TODO: fazer implementação para conferencia se tem magia de fogo
+            if (monstro->getNome() == "Aranha Gigante") {
+                monstro->setEnergia(0);
+                cout << "\n" << "Seu feitico de fogo acerta em cheio a " << monstro->getNome() << " queimando-a" << endl;
+                return getProximaCena(true);
+            }
+            else {
+                cout << "\n" << "Voce nao pode usar magia agora!" << endl;
+            }
+        }
+        else {
+            cout << "\n" << "Ação inválida. Digite A, M, T ou F." << endl;
+        }
+    }
+
+    if (jogador.getEnergia() > 0) {
+        cout << "\n\n--- VITORIA ---" << endl;
+        cout << "\n" << "Proxima cena eh " << getProximaCena(true) << endl; 
+        monstro->transferirItens(jogador);
+        return getProximaCena(true);
+    } else {
+        cout << "\n\n--- DERROTA ---" << endl;
+        cout << "\n" << "Proxima cena eh " << getProximaCena(false) << endl;
+        return getProximaCena(false);
+    }
+}
+
+//private methods
+void CenaDeCombate::exibirStatusCombate(Personagem& jogador) {
+    cout << "\n--- STATUS DA BATALHA ---" << std::endl;
+    cout << "Seu Personagem - ENERGIA: " << jogador.getEnergia()
+        << " | SORTE: " << jogador.getSorte() << std::endl;
+    cout << monstro->getNome() << " - ENERGIA: " << monstro->getEnergia() << endl;
+    cout << "-------------------------" << std::endl;
+}
+
+void CenaDeCombate::executarAtaque(Personagem& jogador) {
+    int faJogador = jogador.calcFA();
+    int faMonstro = monstro->calcFA();
+
+    if (faJogador > faMonstro) {
+        if (jogador.getBonusSorte() == true) {
+            monstro->recebeDano();
+            monstro->recebeDano();
+            jogador.setBonusSorte(false);
+            cout << "\n" << jogador.getNome() << " venceu o turno! O " << monstro->getNome() << " perdeu 4 de energia com seu bonus de sorte ativado" << endl;
+        }
+        else {
+            monstro->recebeDano();
+            cout << "\n" << jogador.getNome() << " venceu o turno! O " << monstro->getNome() << " perdeu 2 de energia" << endl;
+        }
+    }
+    else if (faJogador < faMonstro) {
+        jogador.recebeDano();
+        cout << "\n" << monstro->getNome() << " venceu o turno! O " << jogador.getNome() << " perdeu 2 de energia" << endl;
+    }
+    else {
+        jogador.recebeDano();
+        monstro->recebeDano();
+        cout << "\n" << "Empate! Ambos perdem 2 de energia!" << endl;
+    }
+
+}
+
+bool CenaDeCombate::tentarFuga(Personagem& jogador) {
+    cout << "\n" << "Tentando fugir. Testando sorte..." << endl;
+
+    if (jogador.testaSorte()) {
+        cout << "\n" << "Voce conseguiu fugir com sucesso!" << endl;
+        cout << "\n" << "Proxima cena eh " << getProximaCena(true) << endl; 
+        return true;
+    }
+    else {
+        cout << "\n" << "A fuga falhou! Voce perdeu 2 de Energia e o combate continua." << endl;
+        return false;
+    }
 }

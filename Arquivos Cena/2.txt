@@ -1,6 +1,6 @@
 Você usa o feitiço Alohomora e a fechadura faz um clique suave. A porta se abre. Você entra na seção proibida da biblioteca. 
 Os livros parecem sussurrar segredos. Você precisa de um mapa para se orientar. 
 
-#1: Procurar o mapa nas estantes: Você vasculha as estantes à procura de um mapa. Vá para a cena 6. 
-#2: Tentar usar a sua sorte para encontrar a chave: Você decide fazer um teste de sorte, já que a chave que você procurava pode estar por perto. Use um teste de sorte e, se for bem-sucedido, vá para a cena 7. Se falhar, vá para a cena 8. 
-#3: Voltar para o dormitório: Você se assusta com os barulhos e decide voltar para o dormitório, mas no caminho encontra um mapa que o leva para uma passagem secreta. Vá para a cena 9. 
+#6: Procurar o mapa nas estantes: Você vasculha as estantes à procura de um mapa. Vá para a cena 6. 
+#7/8: Tentar usar a sua sorte para encontrar a chave: Você decide fazer um teste de sorte, já que a chave que você procurava pode estar por perto. Use um teste de sorte e, se for bem-sucedido, vá para a cena 7. Se falhar, vá para a cena 8. 
+#9: Voltar para o dormitório: Você se assusta com os barulhos e decide voltar para o dormitório, mas no caminho encontra um mapa que o leva para uma passagem secreta. Vá para a cena 9. 

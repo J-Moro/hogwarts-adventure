@@ -1,5 +1,5 @@
 Você se aproxima da porta para a seção proibida, mas o feitiço de destrancar portas Alohomora falha. O barulho ecoa pelo corredor. Você tenta novamente. 
 
-#1: Tentar novamente: Vá para a cena 2. 
-#2: Voltar para o dormitório: Vá para a cena 5. 
-#3: Falar com um dos fantasmas do castelo: Você decide perguntar ao Barão Sangrento como abrir a porta para a seção proibida. Vá para a cena 10. 
+#2: Tentar novamente: Vá para a cena 2. 
+#5: Voltar para o dormitório: Vá para a cena 5. 
+#10: Falar com um dos fantasmas do castelo: Você decide perguntar ao Barão Sangrento como abrir a porta para a seção proibida. Vá para a cena 10. 

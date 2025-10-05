@@ -3,4 +3,4 @@ A chave está em uma das estantes, bem ao lado da sua mão. Você pega a chave e
 
 I: Chave do mapa;c;0;0;0  
 
-#1: Abrir o baú: Vá para a cena 12. 
+#12: Abrir o baú: Vá para a cena 12. 

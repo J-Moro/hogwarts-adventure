@@ -21,18 +21,21 @@ public:
     void setSorte(int num);
     void setTesouro(int num);
     void setProvisoes(int num);
+    void setBonusSorte(bool status);
     string getNome();
     int getHabilidade();
     int getEnergia();
     int getSorte();
     int getTesouro();
     int getProvisoes();
+    bool getBonusSorte();
 
     void recebeDano();
+    //void usarProvisao();
     bool testaSorte();
     int calcFA();
     bool addItem(Item newItem);
-    void mostrarInventario();
+    virtual void mostrarInventario();
     void setInventario(Item* inventario);
     
 
@@ -43,10 +46,13 @@ private:
     int energia;
     int sorte;
 
+    bool bonusSorte;
     int tesouro;
     int provisoes;
     static const int MAX_ITEMS = 10;
     int itemCount;
+
+protected:
     Item* inventarioUsuario;
 
 };

@@ -1,5 +1,5 @@
 Você usa uma poção do sono para derrubar a maldição do baú. O baú se abre e você encontra o mapa da seção proibida.
 
-I: Poção do Sono;c;0;0;0 
+I: Pocao do Sono;c;0;0;0 
  
-#1: Pegar o mapa: Vá para a cena 12. 
+#12: Pegar o mapa: Vá para a cena 12. 

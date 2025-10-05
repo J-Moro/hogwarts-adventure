@@ -9,14 +9,14 @@ class CenaDeTexto : public Cena {
         CenaDeTexto(string nomeArquivo);
         ~CenaDeTexto();
 
-        void exibirCena() override;
+        void exibirCena(Personagem& jogador) override;
 
-        void setOpcoes(map<int, std::string> opcoes);
+        void setOpcoes(int opcao);
         void setItemNecessario(string item);
-        void carregaCena(string nomeArquivo);
+        void carregaCena(string nomeArquivo) override;
         string getProximaCena(int escolha);
 
     private:
-        map<int, string> opcoes;
+        map<int, bool> opcoes;
         string itemNecessario;
 };

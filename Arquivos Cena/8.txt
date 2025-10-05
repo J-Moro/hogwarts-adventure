@@ -1,7 +1,7 @@
-Poxa... você falha no teste de sorte para encontrar a chave do baú. 
+Poxa ... você falha no teste de sorte para encontrar a chave do baú. 
 O barulho de um livro caindo no chão ecoa na biblioteca, chamando a atenção de um fantasma. 
 
-N: Pirraça  
+N: Pirraca
 M: S 
 H: 10  
 S: 10  

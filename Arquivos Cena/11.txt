@@ -1,6 +1,6 @@
-Poxa... você tenta subir na prateleira, mas ela balança e você cai no chão. O baque atrai a atenção de Filch, que vem em sua direção com Madame Norra. 
+Poxa ... você tenta subir na prateleira, mas ela balança e você cai no chão. O baque atrai a atenção de Filch, que vem em sua direção com Madame Norra. 
 
-N: Filch 
+N: Filch
 M: S 
 H: 10 
 S: 10 

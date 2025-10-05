@@ -1,5 +1,5 @@
 Você examina a porta em busca da chave. No topo de uma das prateleiras, uma chave brilhante com o brasão da Sonserina está pendurada. Você precisa alcançá-la. 
 
-#1: Usar o feitiço Accio para pegar a chave: A chave voa em sua direção. Você a pega e destranca a porta. Vá para a cena 2. 
-#2: Subir na prateleira: A prateleira balança precariamente. Você precisa de 7 ou mais de habilidade para subir com sucesso. Se conseguir, pegue a chave e vá para a cena 2. Se falhar, você cai no chão e atrai a atenção de Filch. Vá para a cena 11. 
-#3: Pedir ajuda a um dos fantasmas do castelo: Você vê o Frei Gordo voando por perto e pede sua ajuda. Ele concorda em pegar a chave para você em troca de um doce. Você dá um doce a ele e ele pega a chave para você. Vá para a cena 2. 
+#2: Usar o feitiço Accio para pegar a chave: A chave voa em sua direção. Você a pega e destranca a porta. Vá para a cena 2. 
+#2/11: Subir na prateleira: A prateleira balança precariamente. Você precisa de 7 ou mais de habilidade para subir com sucesso. Se conseguir, pegue a chave e vá para a cena 2. Se falhar, você cai no chão e atrai a atenção de Filch. Vá para a cena 11. 
+#2: Pedir ajuda a um dos fantasmas do castelo: Você vê o Frei Gordo voando por perto e pede sua ajuda. Ele concorda em pegar a chave para você em troca de um doce. Você dá um doce a ele e ele pega a chave para você. Vá para a cena 2. 

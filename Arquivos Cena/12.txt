@@ -3,4 +3,4 @@ O livro é pesado e tem uma capa de couro. O título está escrito em uma língu
 
 I: Livro Mágico;c;0;0;0 
 
-#1: Ler o enigma: O enigma diz: "Se a Pedra da Serpente você busca, no coração da Floresta Proibida, a verdade se anuncia. Na árvore mais antiga, o enigma se resolve. Na pedra mais velha, o mapa se revela." Você precisa ir para a Floresta Proibida. Vá para a cena 14. 
+#14: Ler o enigma: O enigma diz: "Se a Pedra da Serpente você busca, no coração da Floresta Proibida, a verdade se anuncia. Na árvore mais antiga, o enigma se resolve. Na pedra mais velha, o mapa se revela." Você precisa ir para a Floresta Proibida. Vá para a cena 14. 

@@ -3,4 +3,4 @@ Ao caminhar pelo corredor, você encontra um pergaminho com o símbolo do mapa d
 
 I: Pergaminho;c;0;0;0  
 
-#1: Ir para o salão comunal: A história da aventura termina aqui. Você desiste da busca pela Pedra da Serpente. 
+#0: Ir para o salão comunal: A história da aventura termina aqui. Você desiste da busca pela Pedra da Serpente. 

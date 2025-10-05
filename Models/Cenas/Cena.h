@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "../Personagens/personagens.h"
 
 using namespace std;
 
@@ -9,9 +10,9 @@ class Cena {
         Cena(string nomeArquivo);
         ~Cena();
 
+        virtual void exibirCena(Personagem& jogador) = 0;
         string getNomeArquivo();
         string getTexto();
-        virtual void exibirCena() = 0;
         virtual void carregaCena(string nomeArquivo) = 0;
     
     private:

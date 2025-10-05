@@ -8,6 +8,7 @@ Monstro::Monstro(string nome, int habilidade, int energia, int sorte, int tesour
     setTesouro(tesouro);
     setProvisoes(provisoes);
     setInventario(inventario);
+    setBonusSorte(false);
 }
 
 Monstro::~Monstro(){
@@ -26,5 +27,13 @@ void Monstro::transferirItens(Personagem &oponente) {
         //} else {
           //  break; // Inventário cheio, para de transferir
         //}
+    }
+}
+
+void Monstro::mostrarInventario() {
+    if (this->inventarioUsuario == nullptr) {
+        cout << "(nenhum tesouro)" << endl;
+    } else {
+        cout << "Tesouro do Monstro: " << this->inventarioUsuario->getName() << endl;
     }
 }

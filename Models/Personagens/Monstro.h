@@ -2,6 +2,8 @@
 
 #include "personagens.h"
 
+using namespace std;
+
 class Monstro: public Personagem{
 public:
 
@@ -9,7 +11,7 @@ public:
     ~Monstro();
 
     void transferirItens(Personagem &oponente);
+    void mostrarInventario() override;
 
 private:
-
 };

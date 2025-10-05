@@ -1,8 +1,7 @@
 #include "personagens.h"
 
 Personagem::Personagem(){
-
-    //inventario = new Item[MAX_ITEMS];
+    inventarioUsuario = new Item[MAX_ITEMS];
     itemCount = 0;
 
 }
@@ -85,30 +84,28 @@ int Personagem::getProvisoes(){
 
 void Personagem::recebeDano(){
 
-    energia -=2;
+    this->energia -=2;
 
 }
 
 bool Personagem::testaSorte(){
 
-    srand(time(NULL));
-    int random = (rand() % 6) + 1;
-    
-    sorte--;
+    if (sorte > 0) {
+        int random = (rand() % 6) + 1;
 
-    if (sorte >= random) {
+        sorte--;
 
-        return true;
-
+        if (sorte >= random) {
+            return true;
+        }
+        return false;
     }
 
     return false;
-
 }
 
 int Personagem::calcFA(){
 
-    srand(time(NULL));
     int random = (rand() % 10) + 1;
 
     return habilidade + random;
@@ -121,9 +118,9 @@ bool Personagem::addItem(Item newItem){
             std::cout << "Inventario cheio!" << std::endl;
             return false;
         }
-        //inventario[itemCount] = newItem;
-        itemCount++;
-        return true;
+    inventarioUsuario[itemCount] = newItem;
+    itemCount++;
+    return true;
 
 }
 
@@ -134,15 +131,23 @@ void Personagem::mostrarInventario() {
         }
         for (int i = 0; i < itemCount; i++) {
             std::cout << "  " << (i + 1) << ". Nome: " 
-                      //<< inventario[i].getName()
-                      //<< ", Tipo: " << inventario[i].getType()
-                      //<< ", Combate: " << inventario[i].getCombat()
-                      //<< ", FA: " << inventario[i].getFaBonus()
-                      //<< ", Dano: " << inventario[i].getDamageBonus()
+                      << inventarioUsuario[i].getName()
+                      << ", Tipo: " << inventarioUsuario[i].getType()
+                      << ", Combate: " << inventarioUsuario[i].getCombat()
+                      << ", FA: " << inventarioUsuario[i].getFaBonus()
+                      << ", Dano: " << inventarioUsuario[i].getDamageBonus()
                       << std::endl;
         }
     }
 
 void Personagem::setInventario(Item* inventarioUsuario){
     this->inventarioUsuario = inventarioUsuario;
+}
+
+void Personagem::setBonusSorte(bool status) {
+    bonusSorte = status;
+}
+
+bool Personagem::getBonusSorte() {
+    return bonusSorte;
 }

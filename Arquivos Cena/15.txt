@@ -1,6 +1,6 @@
 Uau ... o mapa revela o esconderijo da Pedra da Serpente!  A pedra está escondida em uma caverna. A entrada da caverna está bloqueada por uma aranha gigante. 
 
-N: Aranha Gigante 
+N: Aranha Gigante
 M: S 
 H: 12 
 S: 10 
