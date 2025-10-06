@@ -1,6 +1,6 @@
-e se aventura na Floresta Proibida. A floresta esta escura e assustadora. Voce encontra uma arvore antiga. 
+Voce se aventura na Floresta Proibida. A floresta esta escura e assustadora. Voce encontra uma arvore antiga. 
 No tronco da arvore, ha um enigma. Voce tem que decifrar o enigma para continuar. 
-O enigma diz: "Eu tenho cidades, mas nao tenho casas. Tenho montanhas, mas nao tenho arvores. Tenho agua, mas nao tenho peixes. O que eu sou?" 
+O enigma diz: "Eu tenho cidades, mas nao tenho casas. Tenho montanhas, mas nao tenho arvores. Tenho agua, mas nao tenho peixes. O que eu sou?"
 
 
 #15: Um mapa: O enigma se ilumina e um mapa da Floresta Proibida aparece no tronco da arvore. O mapa mostra onde a Pedra da Serpente esta. Va para a cena 15. 

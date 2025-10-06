@@ -27,10 +27,11 @@ void GerenciadorDeCena::carregaCena(string nomeArquivo)
     arquivo.close();
 
     // Limpa a cena anterior para evitar vazamento de memória
-    if (cenaAtual != nullptr) {
+    if (nomeArquivo != CENA_1 && cenaAtual != nullptr) {
         delete cenaAtual;
         cenaAtual = nullptr;
     }
+
 
     // Instancia a cena correta
     if (primeiraPalavra == "Uau" || primeiraPalavra == "Poxa") {

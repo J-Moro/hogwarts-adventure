@@ -30,5 +30,6 @@ class GerenciadorDeCena{
     private:
         Cena* cenaAtual;        //ponteiro para objeto cena que o jogador está
         Personagem* personagem; //referencia ao objeto personage do jogador - saber estado do jogado ao salvar o jogo 
+        const string CENA_1 = "Arquivo Cena/1.txt";
 
 };
