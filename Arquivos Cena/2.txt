@@ -1,4 +1,4 @@
-Voce usa o feitiço Alohomora e a fechadura faz um clique suave. A porta se abre. Voce entra na secao proibida da biblioteca. 
+Voce usa o feitico Alohomora e a fechadura faz um clique suave. A porta se abre. Voce entra na secao proibida da biblioteca. 
 Os livros parecem sussurrar segredos. Voce precisa de um mapa para se orientar. 
 
 #6: Procurar o mapa nas estantes: Voce vasculha as estantes a procura de um mapa. Va para a cena 6. 

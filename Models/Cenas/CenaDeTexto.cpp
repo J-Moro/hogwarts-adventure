@@ -16,7 +16,7 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
     //TODO: implementar testar sorte para algumas cenas
     int escolha;
     
-    cout << "\n\n\n" << getTexto() << endl;
+    cout << "\n" << getTexto() << endl;
 
     while (true) {
         cout << "\nQual o numero da sua escolha para a proxima cena: ";
@@ -35,6 +35,8 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
             continue;
         }
     }
+    cout << "\n-------------" << endl;
+
     
     // 6. Monta e retorna o nome do arquivo (ID.txt)
     string proximaCenaFilename = to_string(escolha) + ".txt";

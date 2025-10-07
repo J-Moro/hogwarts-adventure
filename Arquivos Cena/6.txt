@@ -1,4 +1,4 @@
-e vasculha as estantes e encontra um mapa da secao proibida, mas o mapa esta guardado em um bau trancado. 
+Voce vasculha as estantes e encontra um mapa da secao proibida, mas o mapa esta guardado em um bau trancado. 
 Voce tenta abri-lo. 
 
 #12: Usar a sua sorte para abrir o bau: Teste sua sorte. Se for bem-sucedido, Voce abre o bau. Va para a cena 12. 

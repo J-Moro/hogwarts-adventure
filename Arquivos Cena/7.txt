@@ -1,4 +1,4 @@
-e testa sua sorte para encontrar a chave do bau e eh bem-sucedido. 
+Voce testa sua sorte para encontrar a chave do bau e eh bem-sucedido. 
 A chave esta em uma das estantes, bem ao lado da sua mao. Voce pega a chave e abre o bau. 
 
 I: Chave do mapa;c;0;0;0  

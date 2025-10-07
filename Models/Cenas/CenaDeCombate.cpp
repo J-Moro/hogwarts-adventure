@@ -167,11 +167,13 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
     if (jogador.getEnergia() > 0) {
         cout << "\n\n--- VITORIA ---" << endl;
         cout << "\n" << "Proxima cena eh " << getProximaCena(true) << endl; 
+        cout << "\n-------------\n" << endl;
         monstro->transferirItens(jogador);
         return getProximaCena(true);
     } else {
         cout << "\n\n--- DERROTA ---" << endl;
         cout << "\n" << "Proxima cena eh " << getProximaCena(false) << endl;
+        cout << "\n-------------\n" << endl;
         return getProximaCena(false);
     }
 }
@@ -219,6 +221,7 @@ bool CenaDeCombate::tentarFuga(Personagem& jogador) {
     if (jogador.testaSorte()) {
         cout << "\n" << "Voce conseguiu fugir com sucesso!" << endl;
         cout << "\n" << "Proxima cena eh " << getProximaCena(true) << endl; 
+        cout << "\n-------------\n" << endl;
         return true;
     }
     else {

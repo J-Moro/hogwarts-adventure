@@ -13,4 +13,4 @@ I: Pedra da Serpente;c;0;0;0
 
 #1: Fugir: Voce tenta fugir da aranha gigante. Va para a cena 17. 
 2: Atacar: Voce ataca a aranha gigante. Va para a cena 16. 
-3: Usar magia: Voce usa um feitiço de fogo. Se tiver sucesso, voce queima a aranha gigante. Va para a cena 16. 
+3: Usar magia: Voce usa um feitico de fogo. Se tiver sucesso, voce queima a aranha gigante. Va para a cena 16. 
