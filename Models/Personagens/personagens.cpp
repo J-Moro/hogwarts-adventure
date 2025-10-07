@@ -107,6 +107,7 @@ bool Personagem::testaSorte(){
 int Personagem::calcFA(){
 
     int random = (rand() % 10) + 1;
+    cout << "\nJogando dado...    " << random << endl;
 
     return habilidade + random;
 
