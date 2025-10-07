@@ -147,7 +147,6 @@ int main() {
 
                 //LOOP DO JOGO
                 while (jogador.getEnergia() > 0) {
-                    //TODO: implementar perda do jogo quando o map de opcoes tiver a opcao 0 (morte)
                     Cena* cenaAtual = gerenciador.getCenaAtual();
 
                     if (!cenaAtual) {
@@ -156,6 +155,13 @@ int main() {
                     }
 
                     string proximaCenaFileName = cenaAtual->exibirCena(jogador);
+
+                    // Handle cena 0 (morte) explicitamente
+                    if (proximaCenaFileName == "0" || proximaCenaFileName == "0.txt") {
+                        jogador.setEnergia(0); // Força o fim do jogo
+                        break;
+                    }
+
                     string caminhoCompleto = "Arquivos Cena/" + proximaCenaFileName;
 
                     if(proximaCenaFileName.empty()){
@@ -181,7 +187,7 @@ int main() {
             catch(const std::exception& e)
             {
                 cout << "\n[ERRO] - " << e.what() << endl;
-                break; // Sai do loop principal
+                //break; // Sai do loop principal
             }
             
 

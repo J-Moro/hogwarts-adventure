@@ -19,7 +19,6 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
     cout << "\n\n\n" << getTexto() << endl;
 
     while (true) {
-        //TODO: game over se opcoes(map) tiver a chave 0
         cout << "\nQual o numero da sua escolha para a proxima cena: ";
         if (cin >> escolha) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
