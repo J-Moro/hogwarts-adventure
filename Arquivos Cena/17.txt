@@ -1,3 +1,3 @@
 Voce tenta fugir da aranha gigante. Ela o persegue e o encurrala. A aventura termina aqui. 
 
-FIM
+#0:FIM
