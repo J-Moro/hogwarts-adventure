@@ -175,7 +175,7 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
 //private methods
 void CenaDeCombate::exibirStatusCombate(Personagem& jogador) {
     cout << "\n--- STATUS DA BATALHA ---" << std::endl;
-    cout << "Seu Personagem - ENERGIA: " << jogador.getEnergia()
+    cout << jogador.getNome() <<" - ENERGIA: " << jogador.getEnergia()
         << " | SORTE: " << jogador.getSorte() << std::endl;
     cout << monstro->getNome() << " - ENERGIA: " << monstro->getEnergia() << endl;
     cout << "-------------------------" << std::endl;
@@ -185,6 +185,9 @@ void CenaDeCombate::executarAtaque(Personagem& jogador) {
     int faJogador = jogador.calcFA();
     int faMonstro = monstro->calcFA();
 
+    cout << "\nSua forca de ataque: " << faJogador << endl;
+    cout << "\nForca de ataque do monstro: " << faMonstro << endl;
+    
     if (faJogador > faMonstro) {
         if (jogador.getBonusSorte() == true) {
             monstro->recebeDano();

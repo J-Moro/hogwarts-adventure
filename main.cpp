@@ -56,7 +56,7 @@ bool exibirMenuCreditos() {
 
 void criacaoPersonagem(Jogador& jogador) {
     string nome;
-    int pontosRestantes = 15, pontosHabilidade = 0, pontosEnergia = 0;
+    int pontosRestantes = 12, pontosHabilidade = 0, pontosEnergia = 0;
 
     cout << "\n--- CRIACAO DO PERSONAGEM ---" << std::endl;
     cout << "Digite o nome do seu mago para iniciar essa aventura em Hogwarts: ";
@@ -68,18 +68,20 @@ void criacaoPersonagem(Jogador& jogador) {
     
     cout << "Voce tem " << pontosRestantes << " pontos de habilidades para distribuir entre Habilidade, Energia e Sorte." << endl;
     while (true) {
+        cout << "Atributos iniciais" << endl;
+        cout << "Habilidade: " << jogador.getHabilidade() << " | Energia: " << jogador.getEnergia() << " | Sorte: " << jogador.getSorte() << endl;
         std::cout << "\nPontos restantes: " << pontosRestantes << endl;
-        std::cout << "Selecione pontos para HABILIDADE: (Minimo: 6 - Maximo: 12): ";
+        std::cout << "Voce ja tem "<< jogador.getHabilidade() << " pontos em HABILIDADE. Selecione quantos pontos para adicionar: (Minimo: 0 - Maximo: 6): ";
         
-        if (!(cin >> pontosHabilidade) || pontosHabilidade < 6 || pontosHabilidade > 12) {
-            cout << "Valor invalido! Deve ser um numero entre 6 e 12." << endl;
+        if (!(cin >> pontosHabilidade) || pontosHabilidade < 0 || pontosHabilidade > 6) {
+            cout << "Valor invalido! Habilidade total deve ser um numero entre 6 e 12." << endl;
             cin.clear();
-            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else if (pontosHabilidade > pontosRestantes) {
             cout << "Pontos insuficientes! Voce tem apenas " << pontosRestantes << " pontos restantes." << endl;
         } else {
             // Se a entrada for válida, defina e saia do loop
-            jogador.setHabilidade(pontosHabilidade);
+            jogador.setHabilidade(pontosHabilidade + jogador.getHabilidade());
             pontosRestantes -= pontosHabilidade;
             break; 
         }
@@ -87,29 +89,39 @@ void criacaoPersonagem(Jogador& jogador) {
 
     while (true) {
         cout << "\nPontos restantes: " << pontosRestantes << endl;
-        cout << "Selecione pontos para ENERGIA (Minimo: 6 - Maximo: 24): ";
+        std::cout << "Voce ja tem "<< jogador.getEnergia() << " pontos em ENERGIA. Selecione quantos pontos para adicionar: (Minimo: 0 - Maximo: 12): ";
+
         
-        if (!(cin >> pontosEnergia) || pontosEnergia < 6 || pontosEnergia > 24) {
-             cout << "Valor invalido! Deve ser um numero entre 6 e 24." << endl;
+        if (!(cin >> pontosEnergia) || pontosEnergia < 0 || pontosEnergia > 12) {
+             cout << "Valor invalido! Energia total deve ser um numero entre 12 e 24." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else if (pontosEnergia > pontosRestantes) {
              cout << "Pontos insuficientes! Voce tem apenas " << pontosRestantes << " pontos restantes." << endl;
         } else {
-            jogador.setEnergia(pontosEnergia);
+            jogador.setEnergia(pontosEnergia + jogador.getEnergia());
             pontosRestantes -= pontosEnergia;
             break;
         }
     }
 
     if (pontosRestantes >= 0) { 
-        jogador.setSorte(pontosRestantes);
-        cout << "\nSorte atribuida com os pontos restantes: " << pontosRestantes << endl;
+        
+        if (pontosRestantes + jogador.getSorte()> 12) {
+            jogador.setSorte(12);
+        } else {
+            jogador.setSorte(pontosRestantes + jogador.getSorte());
+        }
+        
+
+        cout << "\nOs pontos restantes foram atribuidos a SORTE." << endl;
+        cout << "\nSorte final: " << jogador.getSorte() << endl;
         pontosRestantes = 0;
     } 
     
     cout << "\n--- PERSONAGEM CRIADO ---" << endl;
-    cout << "Habilidade: " << jogador.getHabilidade() << " | Energia: " << jogador.getEnergia() << " | Sorte: " << jogador.getSorte() << endl;
+    cout << "\nAtributos finais:";
+    cout << "\nHabilidade: " << jogador.getHabilidade() << " | Energia: " << jogador.getEnergia() << " | Sorte: " << jogador.getSorte() << endl;
 }
 
 int main() {
@@ -127,6 +139,7 @@ int main() {
         if (escolha == 1) {
             //criar personagem e inventario
             criacaoPersonagem(jogador);
+            cout << "\n\n\n --- INICIO DE JOGO ---" << endl;
 
             try
             {
