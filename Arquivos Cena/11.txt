@@ -1,4 +1,4 @@
-Poxa ... voce tenta subir na prateleira, mas ela balança e voce cai no chao. O baque atrai a atencao de Filch, que vem em sua direcao com Madame Norra. 
+Poxa ... voce tenta subir na prateleira, mas ela balanca e voce cai no chao. O baque atrai a atencao de Filch, que vem em sua direcao com Madame Norra. 
 
 N: Filch
 M: S 

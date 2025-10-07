@@ -1,5 +1,5 @@
 Voce se sente desapontado com sua falta de habilidade e decide voltar para o dormitorio. 
-Ao caminhar pelo corredor, voce encontra um pergaminho com o símbolo do mapa do maroto. 
+Ao caminhar pelo corredor, voce encontra um pergaminho com o simbolo do mapa do maroto. 
 
 I: Pergaminho;c;0;0;0  
 
