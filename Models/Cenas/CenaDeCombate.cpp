@@ -128,6 +128,7 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
             executarAtaque(jogador);
 
         } else if (acao == 'T' || acao == 't') {
+            //TODO: conferencia se a sorte é maior que 0
             bool sucesso = jogador.testaSorte();
             if (sucesso) {
                 cout << "\n" << " SUCESSO! A sorte esta do seu lado. Voce conseguiu um bonus de sorte para a proxima rodada." << endl;
@@ -138,12 +139,13 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
             }
 
         } else if (acao == 'F' || acao == 'f') {
+            //TODO: conferir se esta diminuindo energia
             if (tentarFuga(jogador)) {
                 return getProximaCena(true);
             }
         }
         else if (acao == 'M' || acao == 'm') {
-            //TODO: fazer implementação para conferencia se tem magia de fogo
+            //TODO: fazer implementação para conferencia se tem magia de fogo - ja tem a verificação se está na cena certa
             if (monstro->getNome() == "Aranha Gigante") {
                 monstro->setEnergia(0);
                 cout << "\n" << "Seu feitico de fogo acerta em cheio a " << monstro->getNome() << " queimando-a" << endl;

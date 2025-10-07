@@ -134,6 +134,7 @@ int main() {
 
                 //LOOP DO JOGO
                 while (jogador.getEnergia() > 0) {
+                    //TODO: implementar perda do jogo quando o map de opcoes tiver a opcao 0 (morte)
                     Cena* cenaAtual = gerenciador.getCenaAtual();
 
                     if (!cenaAtual) {
