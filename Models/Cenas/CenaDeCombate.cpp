@@ -128,7 +128,12 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
             executarAtaque(jogador);
 
         } else if (acao == 'T' || acao == 't') {
-            //TODO: conferencia se a sorte é maior que 0
+            
+            if (jogador.getSorte() <= 0) {
+                cout << "\n" << "Voce nao tem mais sorte para testar!" << endl;
+                continue;
+            }
+
             bool sucesso = jogador.testaSorte();
             if (sucesso) {
                 cout << "\n" << " SUCESSO! A sorte esta do seu lado. Voce conseguiu um bonus de sorte para a proxima rodada." << endl;
@@ -139,7 +144,6 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
             }
 
         } else if (acao == 'F' || acao == 'f') {
-            //TODO: conferir se esta diminuindo energia
             if (tentarFuga(jogador)) {
                 return getProximaCena(true);
             }
@@ -186,9 +190,6 @@ void CenaDeCombate::exibirStatusCombate(Personagem& jogador) {
 void CenaDeCombate::executarAtaque(Personagem& jogador) {
     int faJogador = jogador.calcFA();
     int faMonstro = monstro->calcFA();
-
-    cout << "\nSua forca de ataque: " << faJogador << endl;
-    cout << "\nForca de ataque do monstro: " << faMonstro << endl;
     
     if (faJogador > faMonstro) {
         if (jogador.getBonusSorte() == true) {
@@ -225,6 +226,7 @@ bool CenaDeCombate::tentarFuga(Personagem& jogador) {
     }
     else {
         cout << "\n" << "A fuga falhou! Voce perdeu 2 de Energia e o combate continua." << endl;
+        jogador.recebeDano();
         return false;
     }
 }

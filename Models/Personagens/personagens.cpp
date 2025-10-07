@@ -91,14 +91,15 @@ void Personagem::recebeDano(){
 bool Personagem::testaSorte(){
 
     if (sorte > 0) {
+        cout << "\nTeste de sorte: SORTE deve ser maior ou igual ao DADO" << endl;
         int random = (rand() % 6) + 1;
+        cout << "\nJogando dado...    " << random << endl;
 
         sorte--;
 
-        if (sorte >= random) {
+        if ((sorte + 1) >= random) {
             return true;
         }
-        return false;
     }
 
     return false;
@@ -106,8 +107,10 @@ bool Personagem::testaSorte(){
 
 int Personagem::calcFA(){
 
+    cout << "\nForca de ataque = HABILIDADE + DADO" << endl;
     int random = (rand() % 10) + 1;
     cout << "\nJogando dado...    " << random << endl;
+    cout << "\nForca de ataque do " << nome << " : " << habilidade + random << endl;
 
     return habilidade + random;
 
