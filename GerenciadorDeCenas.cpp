@@ -17,43 +17,35 @@ GerenciadorDeCena::~GerenciadorDeCena() {}
 
 void GerenciadorDeCena::carregaCena(string nomeArquivo)
 {
-
-    ifstream arquivo(nomeArquivo);
-
+    std::ifstream arquivo(nomeArquivo);
     if (!arquivo.is_open()) {
-        throw runtime_error("Erro ao abrir arquivo: " + nomeArquivo);
+        throw std::runtime_error("Erro ao abrir arquivo: " + nomeArquivo);
     }
 
-    string primeiraPalavra;
+    std::string primeiraPalavra;
     arquivo >> primeiraPalavra;
     arquivo.close();
 
-    // Limpa a cena anterior para evitar vazamento de memória
-    if (nomeArquivo != CENA_1 && cenaAtual != nullptr) {
-        delete cenaAtual;
-        cenaAtual = nullptr;
-    }
-
-    // Instancia a cena correta
+    // Instancia a cena correta usando unique_ptr
     if (primeiraPalavra == "Uau" || primeiraPalavra == "Poxa") {
-        cenaAtual = new CenaDeCombate(nomeArquivo);
-    }
-    else {
-        cenaAtual = new CenaDeTexto(nomeArquivo);
+        cenaAtual = make_unique<CenaDeCombate>(nomeArquivo);
+    } else {
+        cenaAtual = make_unique<CenaDeTexto>(nomeArquivo);
     }
 
     cenaAtual->lerConteudoBruto(nomeArquivo);
-
     cenaAtual->carregaCena(nomeArquivo);
 }
 
+
 Cena* GerenciadorDeCena::getCenaAtual() {
-    return this->cenaAtual;
+    return this->cenaAtual.get();
 }
 
-void GerenciadorDeCena::setCenaAtual(Cena* cena) {
-    this->cenaAtual = cena;
+void GerenciadorDeCena::setCenaAtual(unique_ptr<Cena> novaCena) {
+    cenaAtual = move(novaCena); // transfere propriedade
 }
+
 
 void GerenciadorDeCena::addCenaVisualizada(string nomeArquivo) {
 
@@ -80,7 +72,20 @@ string GerenciadorDeCena::carregarJogo(Personagem& personagem, int slot) {
     getline(arquivo, nome);
 
     int habilidade, energia, sorte, tesouro, provisoes, bonusSorte, quantidadeItens;
-    arquivo >> habilidade >> energia >> sorte >> tesouro >> provisoes >> bonusSorte >> quantidadeItens;
+    arquivo >> habilidade;
+    arquivo >> energia;
+    arquivo >> sorte;
+    arquivo >> tesouro;
+    arquivo >> provisoes;
+    arquivo >> bonusSorte;
+    arquivo >> quantidadeItens;
+    
+    if (arquivo.fail()) {
+    // A leitura falhou antes de todos os 7 stats serem lidos!
+    cerr << "Erro: Arquivo de salvamento incompleto ou corrompido: " << nomeArquivo << endl;
+    arquivo.close();
+    return ""; // Retorna string vazia para sinalizar falha
+}
     arquivo.ignore(); // Ignora o '\n' após o último inteiro
 
     personagem.setNome(nome);

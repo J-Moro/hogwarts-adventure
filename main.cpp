@@ -247,16 +247,21 @@ int main() {
                 cin >> slot;
             }
 
-            Cena* cenaSalva;
-            cenaSalva->setNomeArquivo (gerenciador.carregarJogo(jogador, slot));
+            string nomeArquivoCena = gerenciador.carregarJogo(jogador, slot);
+            if (nomeArquivoCena.empty()) { 
+                cout << "\nFalha ao carregar o jogo. O slot pode estar vazio ou corrompido." << endl;
+                continue; // Volta ao menu inicial
+            }
 
-            gerenciador.setCenaAtual(cenaSalva);
+
+            gerenciador.carregaCena(nomeArquivoCena);
 
             if (gerenciador.getCenaAtual() == nullptr) {
-                cout << "\nFalha ao carregar o jogo. Voltando ao menu inicial." << endl;
-                continue; // Volta ao menu inicial
-            }           
+                cout << "\nFalha ao carregar o arquivo da cena. Voltando ao menu inicial." << endl;
+                continue; 
+            }
             
+            cout << "\nJogo carregado com sucesso! Bem-vindo de volta, " << jogador.getNome() << "!" << endl;
             jogo(gerenciador, jogador);
 
         } else if (escolha == 3) {
