@@ -82,6 +82,10 @@ int Personagem::getProvisoes(){
 
 }
 
+int Personagem::getMaxItems() {
+    return MAX_ITEMS;
+}
+
 int Personagem::getQuantidadeItens() {
     return itemCount;
 }
@@ -132,19 +136,33 @@ bool Personagem::addItem(Item newItem){
 
 }
 
+bool Personagem::removeItem(string itemName) {
+    for (int i = 0; i < itemCount; i++) {
+        if (inventarioUsuario[i].getName() == itemName) {
+            // Move o último item para a posição do item removido
+            inventarioUsuario[i] = inventarioUsuario[itemCount - 1];
+            itemCount--;
+            return true; // Item removido com sucesso
+        }
+    }
+    return false; // Item não encontrado
+}
+
 void Personagem::mostrarInventario() {
-        std::cout << "Inventário:" << std::endl;
+        cout << "Inventário:" << endl;
+        cout << "Provisoes: " << provisoes << ", Tesouro: " << tesouro << endl;
+        
         if (itemCount == 0) {
-            std::cout << "  (vazio)" << std::endl;
+            cout << "  (vazio)" << endl;
         }
         for (int i = 0; i < itemCount; i++) {
-            std::cout << "  " << (i + 1) << ". Nome: " 
+            cout << "  " << (i + 1) << ". Nome: " 
                       << inventarioUsuario[i].getName()
                       << ", Tipo: " << inventarioUsuario[i].getType()
                       << ", Combate: " << inventarioUsuario[i].getCombat()
                       << ", FA: " << inventarioUsuario[i].getFaBonus()
                       << ", Dano: " << inventarioUsuario[i].getDamageBonus()
-                      << std::endl;
+                      << endl;
         }
     }
 

@@ -20,6 +20,7 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
     cout << "\n" << getTexto() << endl;
 
     while (true) {
+        cout << "\nAbrir Inventario = -1" << endl;
         cout << "\nQual o numero da sua escolha para a proxima cena: ";
         if (cin >> escolha) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -43,6 +44,8 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
         return "Inventario"; //sinaliza para o main que deve abrir o inventario
     }
     
+    handlingCenasEspeciais(static_cast<Jogador&>(jogador), escolha);
+
     // 6. Monta e retorna o nome do arquivo (ID.txt)
     string proximaCenaFilename = to_string(escolha) + ".txt";
    
@@ -109,7 +112,7 @@ void CenaDeTexto::carregaCena(string nomeArquivo) {
                     this->itemNecessario = "";
                 }
 
-                continue; // item foi processaodo - proximo item
+                continue; // item foi processado - proximo item
             }
 
             // b) TENTA LER UMA OPÇÃO (#)
@@ -156,4 +159,47 @@ void CenaDeTexto::carregaCena(string nomeArquivo) {
     }
 
     arquivo.close();
+}
+
+bool CenaDeTexto::handlingCenasEspeciais(Jogador& jogador, int& escolha) {
+    // Implementar aqui o tratamento de cenas especiais, se necessário
+    // Retornar true se a cena especial foi tratada, false caso contrário
+
+    if (this->getNomeArquivo() == "1.txt" && escolha == 2) {
+        if(jogador.getHabilidade() < 8) 
+        {
+            cout << "\nSua habilidade eh insuficiente para essa escolha. Voce sera redirecionado para a cena 3." << endl;
+            escolha = 3;
+            return true;
+        }
+    } else if (this->getNomeArquivo() == "2.txt" && escolha == 7) {
+        if (jogador.testaSorte()) {
+            cout << "Teste de sorte bem sucedido! Voce avanca para a cena 7." << endl;
+        } else {
+            cout << "Teste de sorte falhou! Voce avanca para a cena 8." << endl;
+            escolha = 8;
+        }
+        return true;
+
+    } else if (this->getNomeArquivo() == "4.txt" && escolha == 2) {
+        if(jogador.getHabilidade() < 7) 
+        {
+            cout << "\nSua habilidade eh insuficiente para essa escolha. Voce sera redirecionado para a cena 11." << endl;
+            escolha = 11;
+            return true;
+        }
+    } else if (this->getNomeArquivo() == "6.txt" && escolha == 12) {
+        if(jogador.getHabilidade() < 8) 
+        {
+            cout << "\nSua habilidade eh insuficiente para essa escolha. Vamos testar sua sorte." << endl;
+        } else if (jogador.testaSorte()) {
+            cout << "Teste de sorte bem sucedido! Voce avanca para a cena 7." << endl;
+        } else {
+            cout << "Teste de sorte falhou! Voce avanca para a cena 13." << endl;
+            escolha = 13;
+        }
+        return true;
+    }
+
+    return false;
 }

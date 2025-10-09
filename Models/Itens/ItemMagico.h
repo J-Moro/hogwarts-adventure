@@ -4,6 +4,6 @@
 class ItemMagico : public Item {
     public:
         ItemMagico(string name);
-        ~ItemMagico();
+        ~ItemMagico() {};
 
 };

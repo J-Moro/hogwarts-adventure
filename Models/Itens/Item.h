@@ -10,7 +10,7 @@ class Item {
 
 public:
     Item();
-    ~Item();
+    virtual ~Item();
 
     string getName();
     void setName(string n);

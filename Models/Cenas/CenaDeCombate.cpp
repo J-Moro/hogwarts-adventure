@@ -123,6 +123,7 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
         exibirStatusCombate(jogador);
 
         char acao;
+        cout << "\nAbrir Inventario = I" << endl;
         cout << "\n" << "O que voce vai fazer? (A)tacar, (M)agia, (T)estar Sorte, (F)ugir: ";
         cin >> acao;
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -177,6 +178,7 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
         cout << "\n\n--- VITORIA ---" << endl;
         cout << "\n" << "Proxima cena eh " << getProximaCena(true) << endl; 
         cout << "\n-------------\n" << endl;
+
         monstro->transferirItens(jogador);
         return getProximaCena(true);
     } else {
@@ -193,6 +195,7 @@ void CenaDeCombate::exibirStatusCombate(Personagem& jogador) {
     cout << jogador.getNome() <<" - ENERGIA: " << jogador.getEnergia()
         << " | SORTE: " << jogador.getSorte() << std::endl;
     cout << monstro->getNome() << " - ENERGIA: " << monstro->getEnergia() << endl;
+    cout << "Item do monstro: " << monstro->getInventario()->getName() << endl;
     cout << "-------------------------" << std::endl;
 }
 

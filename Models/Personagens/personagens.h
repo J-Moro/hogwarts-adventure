@@ -28,6 +28,7 @@ public:
     int getSorte();
     int getTesouro();
     int getProvisoes();
+    int getMaxItems();
     int getQuantidadeItens();
     bool getBonusSorte();
 
@@ -36,6 +37,7 @@ public:
     bool testaSorte();
     int calcFA();
     bool addItem(Item newItem);
+    bool removeItem(string itemName);
     virtual void mostrarInventario();
     void setInventario(Item* inventario);
     Item* getInventario();

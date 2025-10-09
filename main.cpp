@@ -33,7 +33,10 @@ void TelaInventario(Jogador& jogador) {
     cout << "===============================" << endl;
     jogador.mostrarInventario();
     cout << "\n 1. Voltar ao jogo" << endl;
-    cout << "\n 2. Salvar e sair do jogo" << endl;
+    cout << "\n 2. Usar provisao" << endl;
+    cout << "\n 3. Equipar arma" << endl;
+    cout << "\n 4. Deletar item" << endl;
+    cout << "\n 5. Salvar e sair do jogo" << endl;
     cout << " Sua escolha: ";
 }
 
@@ -67,6 +70,9 @@ bool exibirMenuCreditos() {
 void criacaoPersonagem(Jogador& jogador) {
     string nome;
     int pontosRestantes = 12, pontosHabilidade = 0, pontosEnergia = 0;
+
+    jogador.setProvisoes(4); //inicia com 4 provisoes
+    jogador.setTesouro(10); //inicia com 10 de tesouro
 
     cout << "\n--- CRIACAO DO PERSONAGEM ---" << std::endl;
     cout << "Digite o nome do seu mago para iniciar essa aventura em Hogwarts: ";
@@ -161,6 +167,75 @@ int jogo(GerenciadorDeCena& gerenciador, Jogador& jogador) {
                 if (escolhaInventario == 1) {
                     break; // Volta ao jogo
                 } else if (escolhaInventario == 2) {
+                    if (jogador.getProvisoes() > 0 && jogador.getEnergia() < 24) {
+                        jogador.setProvisoes(jogador.getProvisoes() - 1);
+                        jogador.setEnergia(jogador.getEnergia() + 4);
+                        if (jogador.getEnergia() > 24) {
+                            jogador.setEnergia(24); // Limita a energia máxima a 24
+                        }
+                        cout << "\nVoce usou uma provisao. Energia atual: " << jogador.getEnergia() << ", Provisoes restantes: " << jogador.getProvisoes() << endl;
+                    } else {
+                        cout << "\nVoce nao tem mais provisoes!" << endl;
+                    }
+                    TelaInventario(jogador); // Reexibe o menu do inventario
+                } else if (escolhaInventario == 3) {
+                    if (jogador.getQuantidadeItens() == 0) {
+                        cout << "\nSeu inventario esta vazio! Nao ha armas para equipar." << endl;
+                        TelaInventario(jogador); // Reexibe o menu do inventario
+                        continue;
+                    }
+
+                    cout << "\nDigite o nome da arma que deseja equipar (ou '0' para cancelar): ";
+                    string itemName;
+                    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+                    getline(cin, itemName);
+
+                    if (itemName == "0") {
+                        TelaInventario(jogador); // Reexibe o menu do inventario
+                        continue; // Cancela a operacao e volta ao menu do inventario
+                    }
+
+                    if (jogador.equiparArma(itemName)) {
+                        cout << "\nArma '" << itemName << "' equipada com sucesso." << endl;
+                    } else {
+                        cout << "\nFalha ao equipar a arma. Verifique se o nome esta correto e tente novamente." << endl;
+                    }
+                    TelaInventario(jogador); // Reexibe o menu do inventario
+                }
+                
+                else if (escolhaInventario == 4) {
+                    if (jogador.getQuantidadeItens() == 0) {
+                        cout << "\nSeu inventario esta vazio! Nao ha itens para deletar." << endl;
+                        TelaInventario(jogador); // Reexibe o menu do inventario
+                        continue;
+                    }
+
+                    jogador.mostrarInventario();
+                    cout << "\nDigite o numero do item que deseja deletar (0 para cancelar): ";
+                    int itemIndex;
+                    cin >> itemIndex;
+
+                    if (itemIndex == 0) {
+                        TelaInventario(jogador); // Reexibe o menu do inventario
+                        continue; // Cancela a delecao e volta ao menu do inventario
+                    }
+
+                    if (itemIndex < 1 || itemIndex > jogador.getQuantidadeItens()) {
+                        cout << "\nIndice invalido! Tente novamente." << endl;
+                        TelaInventario(jogador); // Reexibe o menu do inventario
+                        continue;
+                    }
+
+                    string itemName = jogador.getInventario()[itemIndex - 1].getName();
+                    if (jogador.removeItem(itemName)) {
+                        cout << "\nItem '" << itemName << "' removido do inventario." << endl;
+                    } else {
+                        cout << "\nFalha ao remover o item. Tente novamente." << endl;
+                    }
+                    TelaInventario(jogador); // Reexibe o menu do inventario
+                }
+                
+                else if (escolhaInventario == 5) {
                     
                     cout << "\nEm qual slot deseja salvar? (0, 1 ou 2): ";
                     int slot;
@@ -172,12 +247,18 @@ int jogo(GerenciadorDeCena& gerenciador, Jogador& jogador) {
                         cin >> slot;
                     }
 
-                    gerenciador.salvarJogo(&jogador, slot, cenaAtual->getNomeArquivo());
-                    cout << "\nJogo salvo. Saindo..." << endl;
-                    return 0; // Sai do jogo
+                    if(gerenciador.salvarJogo(&jogador, slot, cenaAtual->getNomeArquivo())){
+                        cout << "\nJogo salvo com sucesso no slot " << slot << "!" << endl;
+                        return 0; // Sai do jogo apos salvar
+                    } else {
+                        cout << "\nFalha ao salvar o jogo." << endl;
+                        TelaInventario(jogador);
+                    }
+                    
+
                 } else {
                     cout << "\nOpcao invalida! Tente novamente." << endl;
-                    //TelaInventario(jogador); // Reexibe o menu do inventario
+                    TelaInventario(jogador); // Reexibe o menu do inventario
                 }
             }
         }
@@ -217,6 +298,7 @@ int main() {
         if (escolha == 1) {
             //criar personagem e inventario
             criacaoPersonagem(jogador);
+            TelaInventario(jogador);
             cout << "\n\n\n --- INICIO DE JOGO ---" << endl;
 
             try

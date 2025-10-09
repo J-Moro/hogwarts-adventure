@@ -21,12 +21,17 @@ void Monstro::transferirItens(Personagem &oponente) {
     this->setTesouro(0);
     oponente.setProvisoes(oponente.getProvisoes() + this->getProvisoes());
     this->setProvisoes(0);
-    for (int i = 0; i < 10; i++) {
-        //if (this->addItem(oponente.inventario[i])) {
-          //  oponente.inventario[i] = Item(); // Remove o item do oponente
-        //} else {
-          //  break; // Inventário cheio, para de transferir
-        //}
+    
+    if (this->getInventario() != nullptr) {
+        if (oponente.addItem(*(this->getInventario()))) {
+            cout << "\nVoce obteve o item: " << this->getInventario()->getName() << " do monstro!" << endl;
+            delete this->getInventario(); // Libera a memória do item do monstro
+            this->setInventario(nullptr); // Remove o item do monstro
+        } else {
+            cout << "\nSeu inventario esta cheio! Nao foi possivel obter o item: " << this->getInventario()->getName() << " do monstro." << endl;
+        }
+    } else {
+        cout << "\nO monstro nao tinha nenhum item para transferir." << endl;
     }
 }
 

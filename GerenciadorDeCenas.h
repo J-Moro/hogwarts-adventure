@@ -30,7 +30,7 @@ class GerenciadorDeCena{
     void setCenaAtual(unique_ptr<Cena> novaCena);
     void addCenaVisualizada(string nomeArquivo);
     set<string> getCenasVisualizadas(); 
-    void salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual);
+    int salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual);
     string carregarJogo(Personagem& personagem, int slot);
 
     private:

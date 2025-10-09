@@ -5,5 +5,5 @@ class Armadura : public Item {
     
     public:
         Armadura(string name, int faBonus, int damageBonus);
-        ~Armadura();
+        ~Armadura() {};
 };

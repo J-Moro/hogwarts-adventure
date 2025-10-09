@@ -102,7 +102,7 @@ string GerenciadorDeCena::carregarJogo(Personagem& personagem, int slot) {
     return pathArquivoAtual;
 }
 
-void GerenciadorDeCena::salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual) {
+int GerenciadorDeCena::salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual) {
     // Monta o nome do arquivo, ex: "savegame_1.sav"
     string nomeArquivo = "savegame_" + to_string(slot) + ".sav";
     
@@ -112,9 +112,9 @@ void GerenciadorDeCena::salvarJogo(Jogador* personagem, int slot, string pathArq
         char resposta;
         cin >> resposta;
         cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer do cin
-        if (resposta != 'N' && resposta != 'n') {
+        if (resposta == 'N' || resposta == 'n') {
             cout << "Salvamento cancelado." << endl;
-            return; // Sai da função sem salvar
+            return 0; // Sai da função sem salvar
         }
     }
 
@@ -176,4 +176,6 @@ void GerenciadorDeCena::salvarJogo(Jogador* personagem, int slot, string pathArq
     arquivo.close();
     // Nota: A linha cin.ignore() é desnecessária aqui, pois estamos escrevendo.
     // Ela só é necessária após a leitura (cin >>).
+
+    return 1; // Sucesso
 }
