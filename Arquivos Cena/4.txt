@@ -1,4 +1,8 @@
-Voce examina a porta em busca da chave. No topo de uma das prateleiras, uma chave brilhante com o brasao da Sonserina esta pendurada. Voce precisa alcança-la. 
+Voce examina a porta em busca da chave. No topo de uma das prateleiras, uma chave brilhante com o brasao da Sonserina esta pendurada. 
+Voce puxa o seu Medalhao de Prata. Ele pulsa, emitindo um brilho fraco que ilumina e foca sua atencao para a prateleira exata onde a chave esta escondida. Voce sente que esta muito perto de destravar o acesso proibido.
+Voce precisa alcanca-la. 
+
+I: Medalhao de Prata;c;0;0;0
 
 #2: Usar o feitico Accio para pegar a chave: A chave voa em sua direcao. Voce a pega e destranca a porta. Va para a cena 2. 
 #2/11: Subir na prateleira: A prateleira balanca precariamente. Voce precisa de 7 ou mais de habilidade para subir com sucesso. Se conseguir, pegue a chave e va para a cena 2. Se falhar, Voce cai no chao e atrai a atençao de Filch. Va para a cena 11. 

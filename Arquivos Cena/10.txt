@@ -2,5 +2,7 @@ Voce decide pedir ajuda ao Barao Sangrento para abrir a porta da secao proibida.
 "Eu posso abrir a porta para voce, mas primeiro voce tera que me responder uma charada," ele sussurra. 
 "O que tem que ser quebrado antes de ser usado?" 
 
+P: Grimorio das Chamas;c,0,0,0
+
 #2: Um ovo: O Barao Sangrento assente com a cabeca e abre a porta para voce. Va para a cena 2. 
 #3: Um segredo: O Barao Sangrento ri e desaparece, deixando voce sozinho. Va para a cena 3. 

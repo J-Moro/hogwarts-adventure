@@ -28,6 +28,7 @@ public:
     int getSorte();
     int getTesouro();
     int getProvisoes();
+    int getQuantidadeItens();
     bool getBonusSorte();
 
     void recebeDano();
@@ -37,6 +38,7 @@ public:
     bool addItem(Item newItem);
     virtual void mostrarInventario();
     void setInventario(Item* inventario);
+    Item* getInventario();
     
 
 private:

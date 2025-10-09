@@ -148,6 +148,7 @@ int main() {
                 //LOOP DO JOGO
                 while (jogador.getEnergia() > 0) {
                     Cena* cenaAtual = gerenciador.getCenaAtual();
+                    //gerenciador.salvarJogo(&jogador, 1, cenaAtual->getNomeArquivo());
 
                     if (!cenaAtual) {
                         cout << "[ERRO] - nao conseguiu abrir a cena atual" << endl;

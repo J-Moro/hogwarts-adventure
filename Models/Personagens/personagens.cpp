@@ -82,6 +82,10 @@ int Personagem::getProvisoes(){
 
 }
 
+int Personagem::getQuantidadeItens() {
+    return itemCount;
+}
+
 void Personagem::recebeDano(){
 
     this->energia -=2;
@@ -146,6 +150,10 @@ void Personagem::mostrarInventario() {
 
 void Personagem::setInventario(Item* inventarioUsuario){
     this->inventarioUsuario = inventarioUsuario;
+}
+
+Item* Personagem::getInventario() {
+    return inventarioUsuario;
 }
 
 void Personagem::setBonusSorte(bool status) {
