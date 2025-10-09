@@ -26,10 +26,11 @@ class GerenciadorDeCena{
 
     void carregaCena(string nomeArquivo);
     Cena* getCenaAtual();
+    void setCenaAtual(Cena* cena);
     void addCenaVisualizada(string nomeArquivo);
     set<string> getCenasVisualizadas(); 
     void salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual);
-    bool carregarJogo(Personagem& personagem, int slot);
+    string carregarJogo(Personagem& personagem, int slot);
 
     private:
         Cena* cenaAtual;        //ponteiro para objeto cena que o jogador está

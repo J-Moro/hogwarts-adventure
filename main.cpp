@@ -134,6 +134,74 @@ void criacaoPersonagem(Jogador& jogador) {
     cout << "\nHabilidade: " << jogador.getHabilidade() << " | Energia: " << jogador.getEnergia() << " | Sorte: " << jogador.getSorte() << endl;
 }
 
+int jogo(GerenciadorDeCena& gerenciador, Jogador& jogador) {
+    
+    //LOOP DO JOGO
+    while (jogador.getEnergia() > 0) {
+        Cena* cenaAtual = gerenciador.getCenaAtual();
+
+        if (!cenaAtual) {
+            cout << "[ERRO] - nao conseguiu abrir a cena atual" << endl;
+            break;
+        }
+
+        string proximaCenaFileName = cenaAtual->exibirCena(jogador);
+
+        // Handle cena 0 (morte) explicitamente
+        if (proximaCenaFileName == "0" || proximaCenaFileName == "0.txt") {
+            jogador.setEnergia(0); // Força o fim do jogo
+            break;
+        }
+
+        if (proximaCenaFileName == "Inventario") {
+            TelaInventario(jogador);
+            int escolhaInventario;
+            while (true) {
+                cin >> escolhaInventario;
+                if (escolhaInventario == 1) {
+                    break; // Volta ao jogo
+                } else if (escolhaInventario == 2) {
+                    
+                    cout << "\nEm qual slot deseja salvar? (0, 1 ou 2): ";
+                    int slot;
+                    cin >> slot;
+
+                    while (slot < 0 || slot > 2) {
+                        
+                        cout << "\nSlot invalido! Escolha 0, 1 ou 2." << endl;
+                        cin >> slot;
+                    }
+
+                    gerenciador.salvarJogo(&jogador, slot, cenaAtual->getNomeArquivo());
+                    cout << "\nJogo salvo. Saindo..." << endl;
+                    return 0; // Sai do jogo
+                } else {
+                    cout << "\nOpcao invalida! Tente novamente." << endl;
+                    //TelaInventario(jogador); // Reexibe o menu do inventario
+                }
+            }
+        }
+        else {
+            string caminhoCompleto = "Arquivos Cena/" + proximaCenaFileName;
+
+            if(proximaCenaFileName.empty()){
+                continue;
+            }
+
+            gerenciador.carregaCena(caminhoCompleto);
+        }
+    }
+
+    // FIM DE JOGO (Tela 4)
+    cout << "\n=======================================" << endl;
+    if (jogador.getEnergia() <= 0) {
+        cout << " | GAME OVER: VOCE FOI DERROTADO(A)! |" << endl;
+    } else {
+        cout << " | FIM DA AVENTURA: VOCE VENCEU! |" << endl;
+    }
+    cout << "=======================================" << endl;
+}
+
 int main() {
     
     srand(time(NULL));
@@ -155,71 +223,7 @@ int main() {
             {
                 gerenciador.carregaCena("Arquivos Cena/1.txt");
 
-                //LOOP DO JOGO
-                while (jogador.getEnergia() > 0) {
-                    Cena* cenaAtual = gerenciador.getCenaAtual();
-                    //gerenciador.salvarJogo(&jogador, 1, cenaAtual->getNomeArquivo());
-
-                    if (!cenaAtual) {
-                        cout << "[ERRO] - nao conseguiu abrir a cena atual" << endl;
-                        break;
-                    }
-
-                    string proximaCenaFileName = cenaAtual->exibirCena(jogador);
-
-                    // Handle cena 0 (morte) explicitamente
-                    if (proximaCenaFileName == "0" || proximaCenaFileName == "0.txt") {
-                        jogador.setEnergia(0); // Força o fim do jogo
-                        break;
-                    }
-
-                    if (proximaCenaFileName == "Inventario") {
-                        TelaInventario(jogador);
-                        int escolhaInventario;
-                        while (true) {
-                            cin >> escolhaInventario;
-                            if (escolhaInventario == 1) {
-                                break; // Volta ao jogo
-                            } else if (escolhaInventario == 2) {
-                                
-                                cout << "\nEm qual slot deseja salvar? (0, 1 ou 2): ";
-                                int slot;
-                                cin >> slot;
-
-                                while (slot < 0 || slot > 2) {
-                                    
-                                    cout << "\nSlot invalido! Escolha 0, 1 ou 2." << endl;
-                                    cin >> slot;
-                                }
-
-                                gerenciador.salvarJogo(&jogador, slot, cenaAtual->getNomeArquivo());
-                                cout << "\nJogo salvo. Saindo..." << endl;
-                                return 0; // Sai do jogo
-                            } else {
-                                cout << "\nOpcao invalida! Tente novamente." << endl;
-                                //TelaInventario(jogador); // Reexibe o menu do inventario
-                            }
-                        }
-                    }
-                    else {
-                        string caminhoCompleto = "Arquivos Cena/" + proximaCenaFileName;
-
-                        if(proximaCenaFileName.empty()){
-                            continue;
-                        }
-
-                        gerenciador.carregaCena(caminhoCompleto);
-                    }
-                }
-
-                // FIM DE JOGO (Tela 4)
-                cout << "\n=======================================" << endl;
-                if (jogador.getEnergia() <= 0) {
-                    cout << " | GAME OVER: VOCE FOI DERROTADO(A)! |" << endl;
-                } else {
-                    cout << " | FIM DA AVENTURA: VOCE VENCEU! |" << endl;
-                }
-                cout << "=======================================" << endl;
+                jogo(gerenciador, jogador);
                 
                 // Volta para o Menu Inicial
                 continue;
@@ -230,14 +234,32 @@ int main() {
                 cout << "\n[ERRO] - " << e.what() << endl;
                 //break; // Sai do loop principal
             }
-            
-
 
 
         } else if (escolha == 2) {
             //chamar funcao que carrega o jogo salvo
-            cout << "\nFuncionalidade de Carregar Jogo ainda nao implementada." << endl;
-        }else if (escolha == 3) {
+            cout << "\nQual slot deseja carregar? (0, 1 ou 2): ";
+            int slot;
+            cin >> slot;
+            while (slot < 0 || slot > 2) {
+                
+                cout << "\nSlot invalido! Escolha 0, 1 ou 2." << endl;
+                cin >> slot;
+            }
+
+            Cena* cenaSalva;
+            cenaSalva->setNomeArquivo (gerenciador.carregarJogo(jogador, slot));
+
+            gerenciador.setCenaAtual(cenaSalva);
+
+            if (gerenciador.getCenaAtual() == nullptr) {
+                cout << "\nFalha ao carregar o jogo. Voltando ao menu inicial." << endl;
+                continue; // Volta ao menu inicial
+            }           
+            
+            jogo(gerenciador, jogador);
+
+        } else if (escolha == 3) {
             bool creditos = exibirMenuCreditos();
             if (creditos == false) {
                 return 0;

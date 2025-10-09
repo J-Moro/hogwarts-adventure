@@ -13,6 +13,10 @@ string Cena::getNomeArquivo(){
     return nomeArquivo;
 }
 
+void Cena::setNomeArquivo(string nomeArquivo) {
+    this->nomeArquivo = nomeArquivo;
+}
+
 string Cena::getTexto(){
     return this->texto;
 }

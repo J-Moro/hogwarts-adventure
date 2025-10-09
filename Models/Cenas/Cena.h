@@ -12,6 +12,7 @@ class Cena {
 
         virtual string exibirCena(Personagem& jogador) = 0;
         string getNomeArquivo();
+        void setNomeArquivo(string nomeArquivo);
         string getTexto();
         void setTexto(string t);
         void lerConteudoBruto(string nomeArquivo);

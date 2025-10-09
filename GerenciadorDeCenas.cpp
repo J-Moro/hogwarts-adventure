@@ -51,6 +51,10 @@ Cena* GerenciadorDeCena::getCenaAtual() {
     return this->cenaAtual;
 }
 
+void GerenciadorDeCena::setCenaAtual(Cena* cena) {
+    this->cenaAtual = cena;
+}
+
 void GerenciadorDeCena::addCenaVisualizada(string nomeArquivo) {
 
 }
@@ -59,9 +63,38 @@ set<string> GerenciadorDeCena::getCenasVisualizadas() {
 
 }
 
-bool GerenciadorDeCena::carregarJogo(Personagem& personagem, int slot) {
+string GerenciadorDeCena::carregarJogo(Personagem& personagem, int slot) {
 
-    return true;
+    string nomeArquivo = "savegame_" + to_string(slot) + ".sav";
+    ifstream arquivo(nomeArquivo);
+
+    if (!arquivo.is_open()) {
+        cerr << "Erro ao abrir arquivo de salvamento: " << nomeArquivo << endl;
+        return "";
+    }
+
+    string pathArquivoAtual;
+    getline(arquivo, pathArquivoAtual);
+
+    string nome;
+    getline(arquivo, nome);
+
+    int habilidade, energia, sorte, tesouro, provisoes, bonusSorte, quantidadeItens;
+    arquivo >> habilidade >> energia >> sorte >> tesouro >> provisoes >> bonusSorte >> quantidadeItens;
+    arquivo.ignore(); // Ignora o '\n' após o último inteiro
+
+    personagem.setNome(nome);
+    personagem.setHabilidade(habilidade);
+    personagem.setEnergia(energia);
+    personagem.setSorte(sorte);
+    personagem.setTesouro(tesouro);
+    personagem.setProvisoes(provisoes);
+    personagem.setBonusSorte(bonusSorte);
+
+
+    arquivo.close();
+    
+    return pathArquivoAtual;
 }
 
 void GerenciadorDeCena::salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual) {
