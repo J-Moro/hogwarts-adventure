@@ -17,6 +17,9 @@ string CenaDeCombate::exibirCena(Personagem& jogador) {
     
     cout << "\n\n\n" << getTexto() << endl;
     string proximaCena= this->iniciaCombate(jogador);
+    if(proximaCena == "Inventario"){
+        return proximaCena;
+    }
     proximaCena += ".txt";
     return proximaCena;
 }
@@ -159,6 +162,12 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
                 cout << "\n" << "Voce nao pode usar magia agora!" << endl;
             }
         }
+        else if (acao == 'I' || acao == 'i') {
+            
+            return "Inventario"; //sinaliza para o main que deve abrir o inventario
+
+        }
+
         else {
             cout << "\n" << "Ação inválida. Digite A, M, T ou F." << endl;
         }

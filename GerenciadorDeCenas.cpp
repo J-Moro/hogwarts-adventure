@@ -2,6 +2,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <sstream>
+#include <filesystem>
 
 #include "GerenciadorDeCenas.h"
 #include "Models/Cenas/Cena.h"
@@ -66,6 +67,19 @@ bool GerenciadorDeCena::carregarJogo(Personagem& personagem, int slot) {
 void GerenciadorDeCena::salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual) {
     // Monta o nome do arquivo, ex: "savegame_1.sav"
     string nomeArquivo = "savegame_" + to_string(slot) + ".sav";
+    
+    if(filesystem::exists(nomeArquivo)) {
+        cout << "\nAviso: O arquivo de salvamento ja existe e sera sobrescrito." << endl;
+        cout << "Deseja continuar? (S/N): ";
+        char resposta;
+        cin >> resposta;
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer do cin
+        if (resposta != 'N' && resposta != 'n') {
+            cout << "Salvamento cancelado." << endl;
+            return; // Sai da função sem salvar
+        }
+    }
+
     ofstream arquivo(nomeArquivo);
 
     if (!arquivo.is_open()) {

@@ -181,12 +181,23 @@ int main() {
                             if (escolhaInventario == 1) {
                                 break; // Volta ao jogo
                             } else if (escolhaInventario == 2) {
-                                gerenciador.salvarJogo(cenaAtual, &jogador);
+                                
+                                cout << "\nEm qual slot deseja salvar? (0, 1 ou 2): ";
+                                int slot;
+                                cin >> slot;
+
+                                while (slot < 0 || slot > 2) {
+                                    
+                                    cout << "\nSlot invalido! Escolha 0, 1 ou 2." << endl;
+                                    cin >> slot;
+                                }
+
+                                gerenciador.salvarJogo(&jogador, slot, cenaAtual->getNomeArquivo());
                                 cout << "\nJogo salvo. Saindo..." << endl;
                                 return 0; // Sai do jogo
                             } else {
                                 cout << "\nOpcao invalida! Tente novamente." << endl;
-                                TelaInventario(jogador); // Reexibe o menu do inventario
+                                //TelaInventario(jogador); // Reexibe o menu do inventario
                             }
                         }
                     }
