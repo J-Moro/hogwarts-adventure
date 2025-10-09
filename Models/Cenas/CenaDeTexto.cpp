@@ -8,6 +8,7 @@
 #include <limits>
 
 CenaDeTexto::CenaDeTexto(string nomeArquivo) : Cena(nomeArquivo) {
+    this->setOpcoes(-1); //mapa de opcoes sempre tem a opcao I (inventario)
 }
 
 CenaDeTexto::~CenaDeTexto(){}
@@ -22,7 +23,7 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
         cout << "\nQual o numero da sua escolha para a proxima cena: ";
         if (cin >> escolha) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
+            
             if (opcoes.find(escolha) == opcoes.end()) {
                 cout << "\n[OPCAO INVALIDA] O numero digitado (" << escolha << ") nao corresponde a uma escolha valida nesta cena. Tente novamente." << endl;
                 continue;
@@ -37,6 +38,10 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
     }
     cout << "\n-------------" << endl;
 
+    if (escolha == -1) {
+
+        return "Inventario"; //sinaliza para o main que deve abrir o inventario
+    }
     
     // 6. Monta e retorna o nome do arquivo (ID.txt)
     string proximaCenaFilename = to_string(escolha) + ".txt";

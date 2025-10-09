@@ -27,6 +27,16 @@ void MenuInicial() {
     cout << " Sua escolha: ";
 }
 
+void TelaInventario(Jogador& jogador) {
+    cout << "\n===============================" << endl;
+    cout << " | INVENTARIO DE " << jogador.getNome() << " |" << endl;
+    cout << "===============================" << endl;
+    jogador.mostrarInventario();
+    cout << "\n 1. Voltar ao jogo" << endl;
+    cout << "\n 2. Salvar e sair do jogo" << endl;
+    cout << " Sua escolha: ";
+}
+
 void MenuCreditos() {
      cout << "\n===============================" << endl;
     cout << " | HOGWARTS ADVENTURE |" << endl;
@@ -162,13 +172,32 @@ int main() {
                         break;
                     }
 
-                    string caminhoCompleto = "Arquivos Cena/" + proximaCenaFileName;
-
-                    if(proximaCenaFileName.empty()){
-                        continue;
+                    if (proximaCenaFileName == "Inventario") {
+                        TelaInventario(jogador);
+                        int escolhaInventario;
+                        while (true) {
+                            cin >> escolhaInventario;
+                            if (escolhaInventario == 1) {
+                                break; // Volta ao jogo
+                            } else if (escolhaInventario == 2) {
+                                gerenciador.salvarJogo(cenaAtual, &jogador);
+                                cout << "\nJogo salvo. Saindo..." << endl;
+                                return 0; // Sai do jogo
+                            } else {
+                                cout << "\nOpcao invalida! Tente novamente." << endl;
+                                TelaInventario(jogador); // Reexibe o menu do inventario
+                            }
+                        }
                     }
+                    else {
+                        string caminhoCompleto = "Arquivos Cena/" + proximaCenaFileName;
 
-                    gerenciador.carregaCena(caminhoCompleto);
+                        if(proximaCenaFileName.empty()){
+                            continue;
+                        }
+
+                        gerenciador.carregaCena(caminhoCompleto);
+                    }
                 }
 
                 // FIM DE JOGO (Tela 4)
