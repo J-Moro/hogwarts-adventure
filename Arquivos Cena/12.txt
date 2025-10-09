@@ -1,6 +1,9 @@
-Voce abre o bau e encontra o mapa da secao proibida. O mapa tem uma marcacao que indica que um livro especial esta escondido em uma das estantes. 
-O livro eh pesado e tem uma capa de couro. O titulo esta escrito em uma lingua antiga que voce nao entende. Voce abre o livro e ve um enigma. 
+Voce testa sua sorte para encontrar a chave do bau e eh bem-sucedido. 
+Nao foi apenas sorte. Ao passar a mao sobre as estantes aleatoriamente, sua intuicao o guia a examinar um livro solto em uma prateleira, que revela um pequeno nicho escondido.
+A chave esta em uma das estantes, bem ao lado da sua mao. E uma chave de latao antiga e pesada, com um simbolo de serpente na ponta.
 
-I: Livro Magico;c;0;0;0 
+Voce pega a chave e abre o bau. 
+
+P: Chave do mapa;c;0;0;0
 
 #14: Ler o enigma: O enigma diz: "Se a Pedra da Serpente voce busca, no coracao da Floresta Proibida, a verdade se anuncia. Na arvore mais antiga, o enigma se resolve. Na pedra mais velha, o mapa se revela." Voce precisa ir para a Floresta Proibida. Va para a cena 14. 

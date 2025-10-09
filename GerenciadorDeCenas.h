@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <set>
 #include "models/Personagens/personagens.h"
+#include "models/Personagens/Jogador.h"
 #include "Models/Cenas/Cena.h"
 
 using namespace std;
@@ -24,12 +26,15 @@ class GerenciadorDeCena{
 
     void carregaCena(string nomeArquivo);
     Cena* getCenaAtual();
-    void salvarJogo(Cena* cenaAtual, Personagem* personagem);
-    void carregaJogo(string arquivoDeSalvamento);
+    void addCenaVisualizada(string nomeArquivo);
+    set<string> getCenasVisualizadas(); 
+    void salvarJogo(Jogador* personagem, int slot, string pathArquivoAtual);
+    bool carregarJogo(Personagem& personagem, int slot);
 
     private:
         Cena* cenaAtual;        //ponteiro para objeto cena que o jogador está
         Personagem* personagem; //referencia ao objeto personage do jogador - saber estado do jogado ao salvar o jogo 
+        set<string> cenasVisualizadas;
         const string CENA_1 = "Arquivo Cena/1.txt";
 
 };

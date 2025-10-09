@@ -45,6 +45,7 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
     
     // 6. Monta e retorna o nome do arquivo (ID.txt)
     string proximaCenaFilename = to_string(escolha) + ".txt";
+   
 
     // 7. Retorna o nome do arquivo para o main loop efetuar a transição
     return proximaCenaFilename;
