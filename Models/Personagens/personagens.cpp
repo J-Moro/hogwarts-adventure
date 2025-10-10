@@ -3,83 +3,56 @@
 Personagem::Personagem(){
     inventarioUsuario = new Item[MAX_ITEMS];
     itemCount = 0;
-
 }
 
-Personagem::~Personagem(){
-    
-}
+Personagem::~Personagem(){}
 
-void Personagem::setNome(string n){
-
+void Personagem::setNome(string n) {
     nome = n;
-
 }
 
-void Personagem::setHabilidade(int num){
-
+void Personagem::setHabilidade(int num) {
     habilidade = num;
-
 }
 
-void Personagem::setEnergia(int num){
-
+void Personagem::setEnergia(int num) {
     energia = num;
-
 }
 
-void Personagem::setSorte(int num){
-
+void Personagem::setSorte(int num) {
     sorte = num;
-
 }
 
-void Personagem::setTesouro(int num){
-
+void Personagem::setTesouro(int num) {
     tesouro = num;
-
 }
 
-void Personagem::setProvisoes(int num){
-
+void Personagem::setProvisoes(int num) {
     provisoes = num;
-
 }
 
-string Personagem::getNome(){
-
+string Personagem::getNome() {
     return nome;
-
 }
 
-int Personagem::getHabilidade(){
-
+int Personagem::getHabilidade() {
     return habilidade;
-
 }
 
-int Personagem::getEnergia(){
-
+int Personagem::getEnergia() {
     return energia;
-
 }
 
-int Personagem::getSorte(){
-
+int Personagem::getSorte() {
     return sorte;
-
 }
 
-int Personagem::getTesouro(){
-
+int Personagem::getTesouro() {
     return tesouro;
-
 }
 
-int Personagem::getProvisoes(){
-
+int Personagem::getProvisoes() {
     return provisoes;
-
 }
 
 int Personagem::getMaxItems() {
@@ -90,14 +63,11 @@ int Personagem::getQuantidadeItens() {
     return itemCount;
 }
 
-void Personagem::recebeDano(){
-
+void Personagem::recebeDano() {
     this->energia -=2;
-
 }
 
-bool Personagem::testaSorte(){
-
+bool Personagem::testaSorte() {
     if (sorte > 0) {
         cout << "\nTeste de sorte: SORTE deve ser maior ou igual ao DADO" << endl;
         int random = (rand() % 6) + 1;
@@ -109,47 +79,53 @@ bool Personagem::testaSorte(){
             return true;
         }
     }
-
     return false;
 }
 
-int Personagem::calcFA(){
-
+int Personagem::calcFA() {
     cout << "\nForca de ataque = HABILIDADE + DADO" << endl;
     int random = (rand() % 10) + 1;
+
     cout << "\nJogando dado...    " << random << endl;
     cout << "\nForca de ataque do " << nome << " : " << habilidade + random << endl;
 
     return habilidade + random;
-
 }
 
-bool Personagem::addItem(Item newItem){
-
+bool Personagem::addItem(Item newItem) {
     if (itemCount >= MAX_ITEMS) {
-            std::cout << "Inventario cheio!" << std::endl;
+            cout << "Inventario cheio!" << endl;
             return false;
         }
     inventarioUsuario[itemCount] = newItem;
     itemCount++;
     return true;
-
 }
 
 bool Personagem::removeItem(string itemName) {
     for (int i = 0; i < itemCount; i++) {
+        
         if (inventarioUsuario[i].getName() == itemName) {
-            // Move o último item para a posição do item removido
             inventarioUsuario[i] = inventarioUsuario[itemCount - 1];
+            
             itemCount--;
-            return true; // Item removido com sucesso
+            return true;
         }
     }
-    return false; // Item não encontrado
+    return false;
+}
+
+bool Personagem::possuiItem(string nomeItem) {
+    for (int i=0; i < itemCount; i++) {
+        if (inventarioUsuario[i].getName() == nomeItem) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Personagem::mostrarInventario() {
-        cout << "Inventário:" << endl;
+        cout << "Inventario:" << endl;
         cout << "Provisoes: " << provisoes << ", Tesouro: " << tesouro << endl;
         
         if (itemCount == 0) {
@@ -164,9 +140,9 @@ void Personagem::mostrarInventario() {
                       << ", Dano: " << inventarioUsuario[i].getDamageBonus()
                       << endl;
         }
-    }
+}
 
-void Personagem::setInventario(Item* inventarioUsuario){
+void Personagem::setInventario(Item* inventarioUsuario) {
     this->inventarioUsuario = inventarioUsuario;
 }
 

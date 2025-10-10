@@ -1,5 +1,7 @@
 #pragma once
+
 #include <map>
+
 #include "Cena.h"
 #include "../Personagens/Jogador.h"
 #include "../../GerenciadorDeCenas.h"
@@ -11,18 +13,29 @@ class CenaDeTexto : public Cena {
         CenaDeTexto(string nomeArquivo);
         ~CenaDeTexto();
 
-        string exibirCena(Personagem& jogador) override;
+        string getProximaCena(int escolha);
 
         void setOpcoes(int opcao);
         void setItemNecessario(string item);
-        void setItemGanho(string item);
+
+        string exibirCena(Personagem& jogador) override;
         void carregaCena(string nomeArquivo) override;
-        string getProximaCena(int escolha);
         bool temItemNecessario() { return !itemNecessario.empty(); }
-        bool handlingCenasEspeciais(Jogador& jogador, int &escolha);
+        void handlingCenasEspeciais(Jogador& jogador, int &escolha);
 
     private:
-        map<int, bool> opcoes;
+        void setItemGanho(string& linha);
+        void setItemNecessarioDaCena(string& linha);
+        void processarOpcoes(string& linha);
+
+        map<int, bool> opcoes;        
         string itemNecessario;
         string itemGanho;
+        bool itemGanhoCombat;
+
+        const string CENA_1 = "Arquivos Cena/1.txt";
+        const string CENA_2 = "Arquivos Cena/2.txt";
+        const string CENA_4 = "Arquivos Cena/4.txt";
+        const string CENA_6 = "Arquivos Cena/6.txt";
+
 };

@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef JOGADOR_H 
+#define JOGADOR_H 
+
 #include "personagens.h"
 #include "../Itens/Arma.h"
 
@@ -7,10 +11,12 @@ public:
 
     Jogador();
     ~Jogador();
+    
     bool equiparArma(string itemName);
 
 private:
-
     Arma* armaEquipada = nullptr;
 
 };
+
+#endif 

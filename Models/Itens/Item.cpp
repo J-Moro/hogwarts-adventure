@@ -15,7 +15,7 @@ type Item::getType() {
     return typeOfItem;
 }
 
-void Item::setType(type t){
+void Item::setType(type t) {
     typeOfItem = t;
 }
 
@@ -23,7 +23,7 @@ bool Item::getCombat() {
     return combat;
 }
 
-void Item::setCombat(bool c){
+void Item::setCombat(bool c) {
     combat = c;
 }
 
@@ -31,7 +31,7 @@ int Item::getFaBonus() {
     return faBonus;
 }
 
-void Item::setFaBonus(int v){
+void Item::setFaBonus(int v) {
     faBonus = v;
 }
 
@@ -39,6 +39,6 @@ int Item::getDamageBonus() {
     return damageBonus;
 }
 
-void Item::setDamageBonus(int v){
+void Item::setDamageBonus(int v) {
     damageBonus = v;
 }

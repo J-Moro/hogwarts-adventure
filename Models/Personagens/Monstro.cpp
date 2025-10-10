@@ -1,6 +1,6 @@
 #include "Monstro.h"
 
-Monstro::Monstro(string nome, int habilidade, int energia, int sorte, int tesouro, int provisoes, Item* inventario){
+Monstro::Monstro(string nome, int habilidade, int energia, int sorte, int tesouro, int provisoes, Item* inventario) {
     setNome(nome);
     setHabilidade(habilidade);
     setEnergia(energia);
@@ -11,22 +11,23 @@ Monstro::Monstro(string nome, int habilidade, int energia, int sorte, int tesour
     setBonusSorte(false);
 }
 
-Monstro::~Monstro(){
-
-}
+Monstro::~Monstro() {}
 
 void Monstro::transferirItens(Personagem &oponente) {
     
     oponente.setTesouro(oponente.getTesouro() + this->getTesouro());
     this->setTesouro(0);
+    
     oponente.setProvisoes(oponente.getProvisoes() + this->getProvisoes());
     this->setProvisoes(0);
     
     if (this->getInventario() != nullptr) {
+    
         if (oponente.addItem(*(this->getInventario()))) {
             cout << "\nVoce obteve o item: " << this->getInventario()->getName() << " do monstro!" << endl;
-            delete this->getInventario(); // Libera a memória do item do monstro
-            this->setInventario(nullptr); // Remove o item do monstro
+            
+            delete this->getInventario();
+            this->setInventario(nullptr);
         } else {
             cout << "\nSeu inventario esta cheio! Nao foi possivel obter o item: " << this->getInventario()->getName() << " do monstro." << endl;
         }

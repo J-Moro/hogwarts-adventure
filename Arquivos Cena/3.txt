@@ -1,6 +1,6 @@
 Voce se aproxima da porta para a secao proibida, mas o feitico de destrancar portas Alohomora falha. O barulho ecoa pelo corredor. Voce tenta novamente.
 
-P: Feitiço Bombarda;c;1;0;0
+P: Feitico Bombarda;c;1;0;0
 
 #2: Tentar novamente: Va para a cena 2. 
 #5: Voltar para o dormitorio: Va para a cena 5. 

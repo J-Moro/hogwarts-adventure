@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include <iostream>
 
@@ -13,14 +14,15 @@ public:
     virtual ~Item();
 
     string getName();
-    void setName(string n);
     type getType();
-    void setType(type t);
     bool getCombat();
-    void setCombat(bool c);
     int getFaBonus();
-    void setFaBonus(int v);
     int getDamageBonus();
+    
+    void setName(string n);
+    void setType(type t);
+    void setCombat(bool c);
+    void setFaBonus(int v);
     void setDamageBonus(int v);
 
 private:

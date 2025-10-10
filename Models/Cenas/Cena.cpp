@@ -1,15 +1,14 @@
 #include "Cena.h"
+
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
 
-Cena::Cena(string nomeArquivo) : nomeArquivo(nomeArquivo) {
-}
-
+Cena::Cena(string nomeArquivo) : nomeArquivo(nomeArquivo) {}
 Cena::~Cena(){}
 
 
-string Cena::getNomeArquivo(){
+string Cena::getNomeArquivo() {
     return nomeArquivo;
 }
 
@@ -17,7 +16,7 @@ void Cena::setNomeArquivo(string nomeArquivo) {
     this->nomeArquivo = nomeArquivo;
 }
 
-string Cena::getTexto(){
+string Cena::getTexto() {
     return this->texto;
 }
 

@@ -4,5 +4,5 @@ Voce decide pedir ajuda ao Barao Sangrento para abrir a porta da secao proibida.
 
 P: Grimorio das Chamas;c,0,0,0
 
-#2: Um ovo: O Barao Sangrento assente com a cabeca e abre a porta para voce. Va para a cena 2. 
-#3: Um segredo: O Barao Sangrento ri e desaparece, deixando voce sozinho. Va para a cena 3. 
+#2: Um ovo 
+#3: Um segredo
