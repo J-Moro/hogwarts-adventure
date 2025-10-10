@@ -116,17 +116,17 @@ bool Personagem::removeItem(string itemName) {
 }
 
 bool Personagem::possuiItem(string nomeItem) {
-    for (int i=0; i < itemCount; i++) {
-        if (inventarioUsuario[i].getName() == nomeItem) {
-            return true;
-        }
+    if (armaEquipada.getName() == nomeItem) {
+        return true;
     }
     return false;
 }
 
 void Personagem::mostrarInventario() {
         cout << "Inventario:" << endl;
+        cout << "Habilidade: " << habilidade << ", Energia: " << energia << ", Sorte: " << sorte << endl;
         cout << "Provisoes: " << provisoes << ", Tesouro: " << tesouro << endl;
+        cout << "Arma equipada: " << armaEquipada.getName() << endl;
         
         if (itemCount == 0) {
             cout << "  (vazio)" << endl;

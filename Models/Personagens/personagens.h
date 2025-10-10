@@ -38,7 +38,7 @@ public:
     int calcFA();
     bool addItem(Item newItem);
     bool removeItem(string itemName);
-    bool possuiItem(string nomeItem);
+    virtual bool possuiItem(string nomeItem);
     virtual void mostrarInventario();
     void setInventario(Item* inventario);
     Item* getInventario();
@@ -57,5 +57,6 @@ private:
 
 protected:
     Item* inventarioUsuario;
+    Item armaEquipada;
 
 };

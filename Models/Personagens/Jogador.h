@@ -12,10 +12,10 @@ public:
     Jogador();
     ~Jogador();
     
-    bool equiparArma(string itemName);
+    bool equiparArma(int numeroItem);
 
 private:
-    Arma* armaEquipada = nullptr;
+    
 
 };
 

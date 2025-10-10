@@ -175,18 +175,18 @@ void criacaoPersonagem(Jogador& jogador) {
                 continue;
             }
 
-            cout << "\nDigite o nome da arma que deseja equipar (ou '0' para cancelar): ";
-            string itemName;
+            cout << "\nDigite o numero da arma que deseja equipar (ou '0' para cancelar): ";
+            int numeroItem;
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-            getline(cin, itemName);
+            cin >> numeroItem;
 
-            if (itemName == "0") {
+            if (numeroItem == 0) {
                 cout << " Escolha novamente.";
                 continue; // Cancela a operacao e volta ao menu do inventario
             }
 
-            if (jogador.equiparArma(itemName)) {
-                cout << "\nArma '" << itemName << "' equipada com sucesso." << endl;
+            if (jogador.equiparArma(numeroItem)) {
+                cout << "\nArma '" << numeroItem << "' equipada com sucesso." << endl;
             } else {
                 cout << "\nFalha ao equipar a arma. Verifique se o nome esta correto e tente novamente." << endl;
             }
@@ -210,6 +210,8 @@ int jogo(GerenciadorDeCena& gerenciador, Jogador& jogador) {
         // Handle cena 0 (morte) explicitamente
         if (proximaCenaFileName == "0" || proximaCenaFileName == "0.txt") {
             jogador.setEnergia(0); // Força o fim do jogo
+            break;
+        } else if (proximaCenaFileName == "99" || proximaCenaFileName == "99.txt") {
             break;
         }
 
@@ -240,17 +242,17 @@ int jogo(GerenciadorDeCena& gerenciador, Jogador& jogador) {
                     }
 
                     cout << "\nDigite o nome da arma que deseja equipar (ou '0' para cancelar): ";
-                    string itemName;
+                    int numeroItem;
                     cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-                    getline(cin, itemName);
+                    cin >> numeroItem;
 
-                    if (itemName == "0") {
+                    if (numeroItem == 0) {
                         TelaInventario(jogador); // Reexibe o menu do inventario
                         continue; // Cancela a operacao e volta ao menu do inventario
                     }
 
-                    if (jogador.equiparArma(itemName)) {
-                        cout << "\nArma '" << itemName << "' equipada com sucesso." << endl;
+                    if (jogador.equiparArma(numeroItem)) {
+                        cout << "\nArma '" << numeroItem << "' equipada com sucesso." << endl;
                     } else {
                         cout << "\nFalha ao equipar a arma. Verifique se o nome esta correto e tente novamente." << endl;
                     }
