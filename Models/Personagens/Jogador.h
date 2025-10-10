@@ -15,7 +15,6 @@ public:
     bool equiparArma(int numeroItem);
 
 private:
-    
 
 };
 

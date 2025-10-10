@@ -20,7 +20,9 @@ Jogador::~Jogador(){}
 
 bool Jogador::equiparArma(int numeroItem) {
     Item* inventario = this->getInventario();
-    numeroItem--; // Ajusta o índice para começar em 1
+    
+    numeroItem--;
+
     for (int i = 0; i < this->getQuantidadeItens(); i++) {
         
         if (inventario[numeroItem].getName() == inventario[i].getName()) {
