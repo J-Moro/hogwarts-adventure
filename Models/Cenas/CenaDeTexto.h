@@ -15,6 +15,7 @@ class CenaDeTexto : public Cena {
 
         void setOpcoes(int opcao);
         void setItemNecessario(string item);
+        void setItemGanho(string item);
         void carregaCena(string nomeArquivo) override;
         string getProximaCena(int escolha);
         bool temItemNecessario() { return !itemNecessario.empty(); }
@@ -23,4 +24,5 @@ class CenaDeTexto : public Cena {
     private:
         map<int, bool> opcoes;
         string itemNecessario;
+        string itemGanho;
 };

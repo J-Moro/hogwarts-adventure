@@ -149,7 +149,7 @@ string CenaDeCombate::iniciaCombate(Personagem& jogador) {
 
         } else if (acao == 'F' || acao == 'f') {
             if (tentarFuga(jogador)) {
-                return getProximaCena(true);
+                return getProximaCena(false);
             }
         }
         else if (acao == 'M' || acao == 'm') {

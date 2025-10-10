@@ -1,6 +1,5 @@
 Voce vasculha as estantes e encontra um mapa da secao proibida, mas o mapa esta guardado em um bau trancado. 
 Voce tenta abri-lo. 
 
-#12: Usar a sua sorte para abrir o bau: Teste sua sorte. Se for bem-sucedido, Voce abre o bau. Va para a cena 12. 
 #12: Tentar arrombar o bau com um feitico: Use o feitico Bombarda para arrombar o bau. Voce precisa de 8 ou mais de habilidade para ter sucesso. Se for bem-sucedido, va para a cena 12. 
 #13: Usar uma pocao do sono para derrubar a maldicao do bau: Va para a cena 13. 

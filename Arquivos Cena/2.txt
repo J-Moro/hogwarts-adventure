@@ -2,5 +2,5 @@ Voce usa o feitico Alohomora e a fechadura faz um clique suave. A porta se abre.
 Os livros parecem sussurrar segredos. Voce precisa de um mapa para se orientar. 
 
 #6: Procurar o mapa nas estantes: Voce vasculha as estantes a procura de um mapa. Va para a cena 6. 
-#7/8: Tentar usar a sua sorte para encontrar a chave: Voce decide fazer um teste de sorte, ja que a chave que Voce procurava pode estar por perto. Use um teste de sorte e, se for bem-sucedido, va para a cena 7. Se falhar, va para a cena 8. 
+#7/8: Tentar usar a sua sorte para encontrar a chave: Voce decide fazer um teste de sorte, ja que a chave que voce procurava pode estar por perto. Use um teste de sorte e, se for bem-sucedido, va para a cena 7. Se falhar, va para a cena 8. 
 #9: Voltar para o dormitorio: Voce se assusta com os barulhos e decide voltar para o dormitorio, mas no caminho encontra um mapa que o leva para uma passagem secreta. Va para a cena 9. 

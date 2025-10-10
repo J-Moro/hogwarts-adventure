@@ -20,6 +20,13 @@ string CenaDeTexto::exibirCena(Personagem& jogador) {
     cout << "\n" << getTexto() << endl;
 
     while (true) {
+
+         if (!this->itemGanho.empty()) {
+            ItemComum novoItemGanho(itemGanho);
+            jogador.addItem(novoItemGanho);
+            itemGanho = "";
+         }
+
         cout << "\nAbrir Inventario = -1" << endl;
         cout << "\nQual o numero da sua escolha para a proxima cena: ";
         if (cin >> escolha) {
@@ -62,6 +69,10 @@ void CenaDeTexto::setItemNecessario(std::string item) {
     this->itemNecessario = item;
 }
 
+void CenaDeTexto::setItemGanho(string item) {
+    this->itemGanho = item;
+}
+
 string CenaDeTexto::getProximaCena(int escolha) {
     stringstream ss;
     auto it = this->opcoes.find(escolha);
@@ -85,7 +96,7 @@ void CenaDeTexto::carregaCena(string nomeArquivo) {
     }
 
     while (getline(arquivo, linha)) {
-        if (linha.find('#') != string::npos || linha.find("I:") != string::npos) {
+        if (linha.find('#') != string::npos || linha.find("I:") != string::npos || linha.find("P:") != string::npos) {
             encontrouOpcoesOuItens = true;
             break;
         }
@@ -95,6 +106,31 @@ void CenaDeTexto::carregaCena(string nomeArquivo) {
         do {
             if (linha.find_first_not_of(" \t\n\r") == string::npos) {
                 continue;
+            }
+
+            // Se for P: (ITEM GANHO)
+            if (linha.find("P:") != string::npos) {
+    
+                // 1. Encontra o início do nome (logo após "P:"). Assume que "P:" tem 2 chars.
+                size_t start_pos = linha.find("P:") + 2; 
+
+                // 2. Encontra o final do nome (o primeiro ';'). Como é garantido, não checamos npos.
+                size_t end_pos = linha.find(';', start_pos);
+
+                // 3. Extrai a substring bruta, que pode começar com espaço (Ex: " Feitiço Bombarda").
+                string nome_bruto = linha.substr(start_pos, end_pos - start_pos);
+
+                // 4. Remove espaços em branco (trim) do início.
+                size_t trim_start = nome_bruto.find_first_not_of(" \t");
+    
+                if (trim_start != string::npos) {
+                    // Armazena APENAS o nome limpo!
+                    this->itemGanho = nome_bruto.substr(trim_start); 
+                } else {
+                    this->itemGanho = "";
+                }
+
+                continue; // Processado, vai para a próxima linha
             }
 
             if (linha.find("I:") != string::npos) {

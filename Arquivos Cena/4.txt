@@ -5,5 +5,5 @@ Voce precisa alcanca-la.
 I: Medalhao de Prata;c;0;0;0
 
 #2: Usar o feitico Accio para pegar a chave: A chave voa em sua direcao. Voce a pega e destranca a porta. Va para a cena 2. 
-#2/11: Subir na prateleira: A prateleira balanca precariamente. Voce precisa de 7 ou mais de habilidade para subir com sucesso. Se conseguir, pegue a chave e va para a cena 2. Se falhar, Voce cai no chao e atrai a atençao de Filch. Va para a cena 11. 
-#2: Pedir ajuda a um dos fantasmas do castelo: Voce ve o Frei Gordo voando por perto e pede sua ajuda. Ele concorda em pegar a chave para Voce em troca de um doce. Voce da um doce a ele e ele pega a chave para Voce. Va para a cena 2. 
+#2/11: Subir na prateleira: A prateleira balanca precariamente. Voce precisa de 7 ou mais de habilidade para subir com sucesso. Se conseguir, pegue a chave e va para a cena 2. Se falhar, Voce cai no chao e atrai a atencao de Filch. Va para a cena 11. 
+#2: Pedir ajuda a um dos fantasmas do castelo: Voce ve o Frei Gordo voando por perto e pede sua ajuda. Ele pega a chave para Voce. Va para a cena 2. 
