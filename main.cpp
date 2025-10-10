@@ -138,6 +138,60 @@ void criacaoPersonagem(Jogador& jogador) {
     cout << "\n--- PERSONAGEM CRIADO ---" << endl;
     cout << "\nAtributos finais:";
     cout << "\nHabilidade: " << jogador.getHabilidade() << " | Energia: " << jogador.getEnergia() << " | Sorte: " << jogador.getSorte() << endl;
+
+    cout << "\n===============================" << endl;
+    cout << " | INVENTARIO DE " << jogador.getNome() << " |" << endl;
+    cout << "===============================" << endl;
+    jogador.mostrarInventario();
+    cout << "\n 1. Comecar jogo" << endl;
+    cout << "\n 2. Usar provisao" << endl;
+    cout << "\n 3. Equipar arma" << endl;
+
+    while (true) {
+        
+        int escolhaInventario;
+        cout << " Sua escolha: ";
+        cin >> escolhaInventario;
+        
+        if (escolhaInventario == 1) {
+            break; // Volta ao jogo
+        } else if (escolhaInventario == 2) {
+            if (jogador.getProvisoes() > 0 && jogador.getEnergia() < 24) {
+                jogador.setProvisoes(jogador.getProvisoes() - 1);
+                jogador.setEnergia(jogador.getEnergia() + 4);
+                if (jogador.getEnergia() > 24) {
+                    jogador.setEnergia(24); // Limita a energia máxima a 24
+                }
+                cout << "\nVoce usou uma provisao. Energia atual: " << jogador.getEnergia() << ", Provisoes restantes: " << jogador.getProvisoes() << endl;
+                continue;
+            } else {
+                cout << "\nVoce nao tem mais provisoes!" << endl;
+            }
+            cout << " Escolha novamente.";
+        } else if (escolhaInventario == 3) {
+            if (jogador.getQuantidadeItens() == 0) {
+                cout << "\nSeu inventario esta vazio! Nao ha armas para equipar." << endl;
+                cout << " Escolha novamente.";
+                continue;
+            }
+
+            cout << "\nDigite o nome da arma que deseja equipar (ou '0' para cancelar): ";
+            string itemName;
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            getline(cin, itemName);
+
+            if (itemName == "0") {
+                cout << " Escolha novamente.";
+                continue; // Cancela a operacao e volta ao menu do inventario
+            }
+
+            if (jogador.equiparArma(itemName)) {
+                cout << "\nArma '" << itemName << "' equipada com sucesso." << endl;
+            } else {
+                cout << "\nFalha ao equipar a arma. Verifique se o nome esta correto e tente novamente." << endl;
+            }
+        }
+    }
 }
 
 int jogo(GerenciadorDeCena& gerenciador, Jogador& jogador) {
